@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/shpjs@3.6.3/dist/shp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mapbox/shp-write@0.4.3/shpwrite.js"></script>
 <style>
 :root {
   --bg: #f0f2f5;
@@ -651,6 +653,13 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
         <div>
           <strong>Ekspor sebagai GeoJSON</strong>
           <span>Geometri lengkap + atribut yang diedit dalam format GeoJSON — dapat diimpor ke QGIS, ArcGIS, dll.</span>
+        </div>
+      </div>
+      <div class="export-option" onclick="app.exportShapefile()">
+        <div class="icon"><i class="fas fa-file-zipper"></i></div>
+        <div>
+          <strong>Ekspor sebagai Shapefile (.zip)</strong>
+          <span>Ekspor kembali ke format Shapefile ZIP (.shp, .dbf, .shx, .prj) dengan semua hasil edit — siap pakai di QGIS, ArcGIS, dll.</span>
         </div>
       </div>
       <div class="export-option" onclick="app.exportSession()">
@@ -1358,7 +1367,6 @@ class GeoEditApp {
   }
 
   exportGeoJSON(){
-    // Rebuild features with edited properties
     const fc = {
       type: 'FeatureCollection',
       features: this._features.map((feat, i) => {
@@ -1371,6 +1379,57 @@ class GeoEditApp {
     this._download(JSON.stringify(fc, null, 2), 'kkprl_export_'+Date.now()+'.geojson', 'application/json');
     closeModal('modal-export');
     this.toast('GeoJSON berhasil diekspor!');
+  }
+
+  async exportShapefile(){
+    try {
+      if(typeof shpwrite === 'undefined') throw new Error('Library shp-write tidak termuat');
+
+      // Build GeoJSON FeatureCollection with edited properties
+      const fc = {
+        type: 'FeatureCollection',
+        features: this._features.map((feat, i) => {
+          const r = this.data[i];
+          const props = {};
+          this.allCols.forEach(c => {
+            // DBF max field name length = 10 chars
+            const key = String(c).substring(0, 10);
+            props[key] = r[c] ?? '';
+          });
+          return { ...feat, properties: props };
+        })
+      };
+
+      // shp-write options
+      const opts = {
+        folder: 'kkprl_export',
+        types: {
+          point:   'POINT',
+          polygon: 'POLYGON',
+          line:    'POLYLINE'
+        }
+      };
+
+      // shp-write returns a base64 zip string
+      const zip = shpwrite.zip(fc, opts);
+
+      // Convert base64 to blob and trigger download
+      const byteChars = atob(zip);
+      const byteNums = new Array(byteChars.length);
+      for(let i = 0; i < byteChars.length; i++) byteNums[i] = byteChars.charCodeAt(i);
+      const byteArr = new Uint8Array(byteNums);
+      const blob = new Blob([byteArr], { type: 'application/zip' });
+
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'kkprl_export_' + Date.now() + '.zip';
+      a.click();
+
+      closeModal('modal-export');
+      this.toast('Shapefile ZIP berhasil diekspor!', 'success');
+    } catch(err) {
+      this.toast('Gagal ekspor Shapefile: ' + err.message, 'danger');
+    }
   }
 
   exportSession(){
