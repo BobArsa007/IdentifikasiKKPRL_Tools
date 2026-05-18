@@ -65,12 +65,10 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--text); overflow: hidden; font-size: 14px; }
 
-/* SCROLLBAR */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
-/* BUTTONS */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   padding: 7px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border);
@@ -89,7 +87,6 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
 .btn-icon { padding: 7px; width: 32px; height: 32px; }
 .btn-icon.btn-sm { width: 28px; height: 28px; padding: 4px; }
 
-/* FORM ELEMENTS */
 input[type="text"], input[type="number"], input[type="email"], textarea, select {
   font-family: var(--font); font-size: 13px; color: var(--text);
   background: var(--surface); border: 1px solid var(--border);
@@ -102,72 +99,37 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
   box-shadow: 0 0 0 3px rgba(68,147,248,.15);
 }
 
-/* =========================================================
-   UPLOAD SCREEN
-   ========================================================= */
+/* UPLOAD */
 #upload-screen {
   position: fixed; inset: 0; background: var(--bg); z-index: 9999;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
-.upload-logo {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 32px;
-}
-.upload-logo .logo-mark {
-  width: 40px; height: 40px; background: var(--accent); border-radius: 10px;
-  display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px;
-}
+.upload-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+.upload-logo .logo-mark { width: 40px; height: 40px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; }
 .upload-logo h1 { font-size: 22px; font-weight: 700; letter-spacing: -.5px; }
 .upload-logo span { color: var(--accent); }
-
-.upload-card {
-  width: 520px; max-width: 92vw; background: var(--surface);
-  border: 1px solid var(--border); border-radius: 16px;
-  box-shadow: var(--shadow-lg); overflow: hidden;
-}
-.upload-card-header {
-  padding: 20px 24px 0; 
-}
+.upload-card { width: 520px; max-width: 92vw; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow-lg); overflow: hidden; }
+.upload-card-header { padding: 20px 24px 0; }
 .upload-card-header h2 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
 .upload-card-header p { font-size: 13px; color: var(--text2); }
-
-.drop-zone {
-  margin: 16px; border: 1.5px dashed var(--border2); border-radius: var(--radius);
-  padding: 36px 24px; text-align: center; cursor: pointer; transition: all .2s; position: relative;
-  background: var(--surface2);
-}
-.drop-zone:hover, .drop-zone.dragover {
-  border-color: var(--accent); background: var(--accent-light);
-}
-.drop-zone .drop-icon {
-  width: 48px; height: 48px; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 12px; color: var(--text2); font-size: 20px; box-shadow: var(--shadow-sm);
-}
+.drop-zone { margin: 16px; border: 1.5px dashed var(--border2); border-radius: var(--radius); padding: 36px 24px; text-align: center; cursor: pointer; transition: all .2s; position: relative; background: var(--surface2); }
+.drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: var(--accent-light); }
+.drop-zone .drop-icon { width: 48px; height: 48px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: var(--text2); font-size: 20px; box-shadow: var(--shadow-sm); }
 .drop-zone strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 4px; }
 .drop-zone p { font-size: 12px; color: var(--text3); }
 .drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-
-.upload-card-footer {
-  padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px;
-}
+.upload-card-footer { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px; }
 #upload-progress { display: none; }
 .progress-label { font-size: 12px; color: var(--text2); margin-bottom: 6px; display: flex; justify-content: space-between; }
 .progress-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
 .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; width: 0%; transition: width .3s; }
-#upload-error {
-  display: none; padding: 10px 14px; background: var(--danger-light);
-  border: 1px solid rgba(180,35,24,.2); border-radius: var(--radius-sm);
-  font-size: 13px; color: var(--danger);
-}
+#upload-error { display: none; padding: 10px 14px; background: var(--danger-light); border: 1px solid rgba(180,35,24,.2); border-radius: var(--radius-sm); font-size: 13px; color: var(--danger); }
 .upload-note { font-size: 11px; color: var(--text3); text-align: center; padding: 0 4px 4px; line-height: 1.6; }
 
-/* =========================================================
-   LAYOUT
-   ========================================================= */
+/* APP LAYOUT */
 #app { display: none; height: 100%; flex-direction: column; }
 #app.visible { display: flex; }
 
-/* HEADER */
 #header {
   height: var(--header-h); background: var(--surface); border-bottom: 1px solid var(--border);
   display: flex; align-items: center; padding: 0 16px; gap: 12px; flex-shrink: 0;
@@ -176,59 +138,77 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 .header-logo { display: flex; align-items: center; gap: 8px; }
 .header-logo .logo-mark { width: 30px; height: 30px; background: var(--accent); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; flex-shrink: 0; }
 .header-logo h1 { font-size: 15px; font-weight: 700; letter-spacing: -.3px; }
-.header-logo .file-badge {
-  font-size: 11px; font-weight: 500; color: var(--text2); background: var(--surface2);
-  padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border);
-  max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
+.header-logo .file-badge { font-size: 11px; font-weight: 500; color: var(--text2); background: var(--surface2); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .header-divider { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; }
 .stat-chips { display: flex; gap: 8px; align-items: center; }
-.stat-chip {
-  font-size: 12px; padding: 3px 10px; border-radius: 20px;
-  background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; gap: 5px;
-}
+.stat-chip { font-size: 12px; padding: 3px 10px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; gap: 5px; }
 .stat-chip .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .stat-chip strong { font-weight: 600; }
-.progress-chip {
-  display: flex; align-items: center; gap: 8px; font-size: 12px;
-  padding: 3px 10px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border);
-}
+.progress-chip { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 3px 10px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border); }
 .mini-progress { width: 60px; height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
 .mini-progress-fill { height: 100%; background: var(--success); border-radius: 3px; width: 0%; transition: width .4s; }
 .header-actions { display: flex; gap: 6px; align-items: center; margin-left: auto; }
 
-/* MAIN BODY */
 #main { display: flex; flex: 1; overflow: hidden; }
 
 /* SIDEBAR */
-#sidebar {
-  width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border);
-  display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden;
-}
-#layers-panel {
-  border-bottom: 1px solid var(--border); padding: 10px 12px; flex-shrink: 0;
-}
+#sidebar { width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden; }
+
+#layers-panel { border-bottom: 1px solid var(--border); padding: 10px 12px; flex-shrink: 0; }
 .layers-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .layers-header span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--text3); }
 #layers-list { display: flex; flex-direction: column; gap: 4px; }
-.layer-item {
-  display: flex; align-items: center; gap: 8px; padding: 6px 8px;
-  border-radius: var(--radius-sm); background: var(--surface2); border: 1px solid var(--border);
-  font-size: 12px;
-}
+.layer-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: var(--radius-sm); background: var(--surface2); border: 1px solid var(--border); font-size: 12px; }
 .layer-swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
 .layer-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
 .layer-controls { display: flex; gap: 3px; }
 
+/* FILTER AREA */
 #filter-area { padding: 10px 12px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
 .search-box { position: relative; }
 .search-box i { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 12px; pointer-events: none; }
 .search-box input { width: 100%; padding: 7px 9px 7px 28px; }
-.quick-filters { display: flex; gap: 5px; }
+
+/* STATUS FILTERS (all/kosong/partial/lengkap) */
+.quick-filters { display: flex; gap: 5px; flex-wrap: wrap; }
 .qf-btn { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); transition: all .12s; }
 .qf-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
+/* COLUMN FILTER PANEL */
+#col-filter-panel {
+  padding: 8px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+  display: none; flex-direction: column; gap: 6px;
+}
+#col-filter-panel.open { display: flex; }
+.col-filter-header {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.col-filter-header span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--text3); }
+.col-filter-row { display: flex; gap: 6px; align-items: center; }
+.col-filter-row select { flex: 1; padding: 5px 8px; font-size: 12px; }
+.col-filter-pills { display: flex; gap: 4px; }
+.cpill {
+  padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 500;
+  cursor: pointer; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); transition: all .12s;
+}
+.cpill.active-filled { background: var(--success); color: #fff; border-color: var(--success); }
+.cpill.active-empty { background: var(--danger); color: #fff; border-color: var(--danger); }
+
+/* COLUMN CONFIG PANEL (label col picker) */
+#col-config-panel {
+  padding: 8px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+  display: none; flex-direction: column; gap: 6px;
+  background: var(--accent-light);
+}
+#col-config-panel.open { display: flex; }
+.col-config-header { display: flex; align-items: center; justify-content: space-between; }
+.col-config-header span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--accent); }
+.col-config-row { display: flex; gap: 6px; align-items: center; }
+.col-config-row label { font-size: 12px; color: var(--text2); white-space: nowrap; }
+.col-config-row select { flex: 1; padding: 5px 8px; font-size: 12px; }
+
 #list-meta { padding: 6px 14px; border-bottom: 1px solid var(--border); font-size: 11px; color: var(--text3); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+.list-meta-actions { display: flex; gap: 4px; align-items: center; }
 
 #feature-list { flex: 1; overflow-y: auto; padding: 4px; }
 .feat-item {
@@ -249,56 +229,50 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 .feat-sub { font-size: 11px; color: var(--text3); margin-top: 1px; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
+/* feat-item col-fill indicators */
+.col-fill-dots { display: flex; gap: 2px; flex-wrap: wrap; max-width: 40px; }
+.col-fill-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
 /* MAP */
 #map-panel { flex: 1; position: relative; }
 #map { width: 100%; height: 100%; }
-.map-overlay-controls {
-  position: absolute; top: 10px; right: 10px; z-index: 1000;
-  display: flex; flex-direction: column; gap: 6px;
-}
-.map-tile-switcher {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
-  box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column;
-}
+.map-overlay-controls { position: absolute; top: 10px; right: 10px; z-index: 1000; display: flex; flex-direction: column; gap: 6px; }
+.map-tile-switcher { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
 .tile-btn { padding: 7px 12px; font-size: 11px; font-weight: 500; cursor: pointer; border: none; background: transparent; color: var(--text2); font-family: var(--font); transition: all .12s; text-align: left; display: flex; align-items: center; gap: 6px; }
 .tile-btn:hover { background: var(--surface2); color: var(--text); }
 .tile-btn.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
 .tile-btn + .tile-btn { border-top: 1px solid var(--border); }
 
 /* DETAIL PANEL */
-#detail-panel {
-  width: var(--detail-w); background: var(--surface); border-left: 1px solid var(--border);
-  display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden;
-}
-#detail-empty {
-  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px; color: var(--text3); font-size: 13px; text-align: center; padding: 24px;
-}
+#detail-panel { width: var(--detail-w); background: var(--surface); border-left: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden; }
+#detail-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text3); font-size: 13px; text-align: center; padding: 24px; }
 #detail-empty .empty-icon { font-size: 36px; opacity: .3; margin-bottom: 4px; }
 #detail-content { display: none; flex-direction: column; height: 100%; overflow: hidden; }
 
-#detail-header {
-  padding: 14px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0;
-  background: linear-gradient(to bottom, var(--surface), var(--surface2));
-}
+#detail-header { padding: 14px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; background: linear-gradient(to bottom, var(--surface), var(--surface2)); }
 #detail-header h3 { font-size: 14px; font-weight: 600; margin-bottom: 3px; line-height: 1.3; }
 .detail-meta { font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.detail-meta .geom-badge {
-  padding: 1px 7px; border-radius: 4px; background: var(--surface2); border: 1px solid var(--border);
-  font-family: var(--mono); font-size: 10px; font-weight: 500; color: var(--text2);
-}
+.detail-meta .geom-badge { padding: 1px 7px; border-radius: 4px; background: var(--surface2); border: 1px solid var(--border); font-family: var(--mono); font-size: 10px; font-weight: 500; color: var(--text2); }
 
 #detail-scroll { flex: 1; overflow-y: auto; padding: 14px 16px; }
 
+/* Field completion bar in detail */
+.field-completion-bar {
+  margin-bottom: 12px; padding: 8px 10px; border-radius: var(--radius-sm);
+  background: var(--surface2); border: 1px solid var(--border);
+}
+.fcb-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; font-size: 11px; }
+.fcb-label { color: var(--text2); font-weight: 500; }
+.fcb-pct { font-weight: 700; color: var(--accent); font-family: var(--mono); }
+.fcb-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.fcb-fill { height: 100%; border-radius: 2px; transition: width .3s; }
+
 .field-group { margin-bottom: 12px; }
 .field-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text3); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
-.field-label .changed-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--warning); display: none; }
-.field-input-wrap input, .field-input-wrap textarea {
-  width: 100%; padding: 7px 10px;
-}
+.field-label .fill-indicator { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.field-input-wrap input, .field-input-wrap textarea { width: 100%; padding: 7px 10px; }
 .field-input-wrap textarea { resize: vertical; min-height: 60px; line-height: 1.5; }
 .field-input-wrap input.changed, .field-input-wrap textarea.changed { border-color: var(--warning); }
-[data-theme="dark"] .field-input-wrap input.changed { background: rgba(227,179,65,.06); }
 .readonly-section { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
 .readonly-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text3); margin-bottom: 8px; }
 .readonly-row { display: flex; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
@@ -310,126 +284,60 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 .detail-nav { padding: 8px 16px; border-top: 1px solid var(--border); display: flex; gap: 6px; flex-shrink: 0; }
 .detail-nav button { flex: 1; }
 
-/* QUICK LINKS */
 .quick-links { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 14px; }
-.quick-link {
-  display: flex; align-items: center; justify-content: center; gap: 5px; padding: 7px;
-  border-radius: var(--radius-sm); font-size: 11px; font-weight: 500;
-  background: var(--surface2); border: 1px solid var(--border); cursor: pointer;
-  color: var(--text2); text-decoration: none; transition: all .15s;
-}
+.quick-link { display: flex; align-items: center; justify-content: center; gap: 5px; padding: 7px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 500; background: var(--surface2); border: 1px solid var(--border); cursor: pointer; color: var(--text2); text-decoration: none; transition: all .15s; }
 .quick-link:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
 
 /* TOAST */
 #toast-container { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 8px; z-index: 99999; pointer-events: none; }
-.toast {
-  background: var(--surface); color: var(--text); padding: 10px 14px; border-radius: var(--radius-sm);
-  font-size: 13px; box-shadow: var(--shadow-lg); border: 1px solid var(--border);
-  display: flex; align-items: center; gap: 8px; pointer-events: auto;
-  opacity: 0; transform: translateY(8px) scale(.97); animation: toastIn .25s forwards;
-  max-width: 320px;
-}
+.toast { background: var(--surface); color: var(--text); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; box-shadow: var(--shadow-lg); border: 1px solid var(--border); display: flex; align-items: center; gap: 8px; pointer-events: auto; opacity: 0; transform: translateY(8px) scale(.97); animation: toastIn .25s forwards; max-width: 320px; }
 .toast.leave { animation: toastOut .25s forwards; }
 @keyframes toastIn { to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes toastOut { to { opacity: 0; transform: translateY(8px) scale(.97); } }
 
 /* MODAL */
-.modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 10000;
-  display: none; align-items: center; justify-content: center;
-  backdrop-filter: blur(3px); padding: 16px;
-}
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(3px); padding: 16px; }
 .modal-overlay.open { display: flex; }
-.modal {
-  background: var(--surface); border-radius: 14px; width: 100%; max-width: 540px;
-  max-height: 85vh; display: flex; flex-direction: column;
-  box-shadow: var(--shadow-lg); border: 1px solid var(--border); overflow: hidden;
-}
+.modal { background: var(--surface); border-radius: 14px; width: 100%; max-width: 540px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); border: 1px solid var(--border); overflow: hidden; }
 .modal.wide { max-width: 680px; }
-.modal-hdr {
-  padding: 16px 20px; border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
+.modal-hdr { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
 .modal-hdr h3 { font-size: 15px; font-weight: 600; }
 .modal-body { padding: 20px; overflow-y: auto; flex: 1; font-size: 13px; line-height: 1.6; }
-.modal-ftr {
-  padding: 12px 20px; border-top: 1px solid var(--border);
-  display: flex; justify-content: flex-end; gap: 8px;
-}
+.modal-ftr { padding: 12px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 8px; }
 
-/* Column mapping */
 .colmap-grid { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; align-items: center; }
 .colmap-label { font-size: 12px; font-weight: 600; color: var(--text2); white-space: nowrap; }
 .colmap-grid select { padding: 6px 8px; }
 
-/* LAYER UPLOAD */
-.layer-upload-zone {
-  border: 1.5px dashed var(--border2); border-radius: var(--radius); padding: 20px;
-  text-align: center; cursor: pointer; background: var(--surface2); transition: all .2s; position: relative;
-  font-size: 13px; color: var(--text2);
-}
+.layer-upload-zone { border: 1.5px dashed var(--border2); border-radius: var(--radius); padding: 20px; text-align: center; cursor: pointer; background: var(--surface2); transition: all .2s; position: relative; font-size: 13px; color: var(--text2); }
 .layer-upload-zone:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
 .layer-upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
 
-/* EXPORT MODAL */
-.export-option {
-  display: flex; align-items: flex-start; gap: 12px; padding: 12px;
-  border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer;
-  transition: all .15s; margin-bottom: 8px;
-}
+.export-option { display: flex; align-items: flex-start; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: all .15s; margin-bottom: 8px; }
 .export-option:hover { background: var(--accent-light); border-color: var(--accent); }
 .export-option .icon { font-size: 20px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
 .export-option strong { display: block; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
 .export-option span { font-size: 12px; color: var(--text2); }
 
-/* Map label tooltip */
-.map-label {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  pointer-events: none;
-}
-.map-label span {
-  display: inline-block;
-  background: linear-gradient(135deg, #1570ef, #0e4fc4);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  font-family: 'DM Sans', sans-serif;
-  white-space: nowrap;
-  padding: 2px 8px;
-  border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(21,112,239,0.55), 0 0 0 1.5px rgba(255,255,255,0.35);
-  letter-spacing: .3px;
-  text-shadow: 0 1px 2px rgba(0,0,0,.3);
-}
-[data-theme="dark"] .map-label span {
-  background: linear-gradient(135deg, #4493f8, #1570ef);
-  box-shadow: 0 2px 6px rgba(68,147,248,0.6), 0 0 0 1.5px rgba(255,255,255,0.2);
-}
+.map-label { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; pointer-events: none; }
+.map-label span { display: inline-block; background: linear-gradient(135deg, #1570ef, #0e4fc4); color: #fff; font-size: 10px; font-weight: 700; font-family: 'DM Sans', sans-serif; white-space: nowrap; padding: 2px 8px; border-radius: 20px; box-shadow: 0 2px 6px rgba(21,112,239,0.55), 0 0 0 1.5px rgba(255,255,255,0.35); letter-spacing: .3px; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
+[data-theme="dark"] .map-label span { background: linear-gradient(135deg, #4493f8, #1570ef); box-shadow: 0 2px 6px rgba(68,147,248,0.6), 0 0 0 1.5px rgba(255,255,255,0.2); }
 
-/* COORD LABEL */
 .coord-label { font-family: var(--mono); font-size: 10px; color: var(--text3); }
 
-/* DARK THEME for Leaflet */
-[data-theme="dark"] .leaflet-tile { filter: none; }
 [data-theme="dark"] .leaflet-container { background: #1a1a2e; }
 [data-theme="dark"] .leaflet-popup-content-wrapper { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 [data-theme="dark"] .leaflet-popup-tip { background: var(--surface); }
 
-/* SECTION HEADER */
-.section-hdr { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--text3); padding: 10px 14px 6px; flex-shrink: 0; }
-
-/* POLYGON HIGHLIGHT */
 .leaflet-interactive:focus { outline: none; }
+
+/* active col filter badge on button */
+.filter-badge { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; font-size: 9px; font-weight: 700; width: 14px; height: 14px; border-radius: 50%; margin-left: 2px; }
 </style>
 </head>
 <body>
 
-<!-- ================================================
-     UPLOAD SCREEN
-     ================================================ -->
+<!-- UPLOAD SCREEN -->
 <div id="upload-screen">
   <div class="upload-logo">
     <div class="logo-mark"><i class="fas fa-map-location-dot"></i></div>
@@ -463,11 +371,8 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
   </button>
 </div>
 
-<!-- ================================================
-     MAIN APP
-     ================================================ -->
+<!-- MAIN APP -->
 <div id="app">
-  <!-- HEADER -->
   <div id="header">
     <div class="header-logo">
       <div class="logo-mark"><i class="fas fa-map-location-dot"></i></div>
@@ -498,7 +403,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
     </div>
   </div>
 
-  <!-- MAIN -->
   <div id="main">
     <!-- SIDEBAR -->
     <div id="sidebar">
@@ -514,10 +418,40 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
             <span class="layer-name" id="main-layer-name">Layer utama</span>
             <div class="layer-controls">
               <button class="btn btn-ghost btn-sm btn-icon" id="main-layer-vis" onclick="app.toggleMainLayer()" title="Tampilkan/sembunyikan layer"><i class="fas fa-eye"></i></button>
-              <button class="btn btn-ghost btn-sm btn-icon" id="main-label-toggle" onclick="app.toggleLabels()" title="Tampilkan/sembunyikan label poligon"><i class="fas fa-tag"></i></button>
+              <button class="btn btn-ghost btn-sm btn-icon" id="main-label-toggle" onclick="app.toggleLabels()" title="Tampilkan/sembunyikan label"><i class="fas fa-tag"></i></button>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Column Config Panel (label col picker — always visible) -->
+      <div id="col-config-panel" class="open">
+        <div class="col-config-header">
+          <span><i class="fas fa-tag" style="font-size:9px"></i> Kolom Label</span>
+          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.toggleColConfig()" title="Tutup"><i class="fas fa-chevron-up" id="col-config-chevron"></i></button>
+        </div>
+        <div class="col-config-row">
+          <label>Tampilkan sebagai:</label>
+          <select id="label-col-select" onchange="app.setLabelCol(this.value)"></select>
+        </div>
+      </div>
+
+      <!-- Column Filter Panel (per-column fill filter) -->
+      <div id="col-filter-panel">
+        <div class="col-filter-header">
+          <span><i class="fas fa-filter" style="font-size:9px"></i> Filter per Kolom</span>
+          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.toggleColFilter()" title="Tutup"><i class="fas fa-chevron-up" id="col-filter-chevron"></i></button>
+        </div>
+        <div class="col-filter-row">
+          <select id="col-filter-select" onchange="app.setColFilter(this.value, null)">
+            <option value="">— pilih kolom —</option>
+          </select>
+          <div class="col-filter-pills">
+            <button class="cpill" id="cpill-filled" onclick="app.setColFilter(null, 'filled')" title="Sudah terisi">✓ Terisi</button>
+            <button class="cpill" id="cpill-empty" onclick="app.setColFilter(null, 'empty')" title="Belum terisi">✗ Kosong</button>
+          </div>
+        </div>
+        <div id="col-filter-summary" style="font-size:11px;color:var(--text3);display:none"></div>
       </div>
 
       <!-- Filters -->
@@ -527,17 +461,22 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
           <input type="text" id="search-input" placeholder="Cari fitur..." autocomplete="off"/>
         </div>
         <div class="quick-filters">
-            <button class="qf-btn active" data-f="all" onclick="app.setFilter(this)">Semua</button>
-            <button class="qf-btn" data-f="empty" onclick="app.setFilter(this)">Kosong</button>
-            <button class="qf-btn" data-f="partial" onclick="app.setFilter(this)">Sebagian</button>
-            <button class="qf-btn" data-f="complete" onclick="app.setFilter(this)">Lengkap</button>
+          <button class="qf-btn active" data-f="all" onclick="app.setFilter(this)">Semua</button>
+          <button class="qf-btn" data-f="empty" onclick="app.setFilter(this)">Kosong</button>
+          <button class="qf-btn" data-f="partial" onclick="app.setFilter(this)">Sebagian</button>
+          <button class="qf-btn" data-f="complete" onclick="app.setFilter(this)">Lengkap</button>
         </div>
       </div>
 
       <!-- List meta -->
       <div id="list-meta">
         <span><strong id="list-count">0</strong> fitur ditampilkan</span>
-        <button class="btn btn-ghost btn-sm" style="padding:2px 6px;font-size:11px" onclick="app.fitAll()"><i class="fas fa-expand-arrows-alt"></i> Sesuaikan</button>
+        <div class="list-meta-actions">
+          <button class="btn btn-ghost btn-sm" style="padding:2px 6px;font-size:11px" onclick="app.toggleColFilter(true)" id="btn-col-filter" title="Filter per kolom">
+            <i class="fas fa-filter"></i> Kolom
+          </button>
+          <button class="btn btn-ghost btn-sm" style="padding:2px 6px;font-size:11px" onclick="app.fitAll()"><i class="fas fa-expand-arrows-alt"></i></button>
+        </div>
       </div>
 
       <!-- Feature list -->
@@ -569,16 +508,21 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
           </div>
         </div>
         <div id="detail-scroll">
-          <!-- Quick links -->
           <div class="quick-links" id="quick-links">
             <a class="quick-link" id="link-gmaps" target="_blank"><i class="fab fa-google"></i> Google Maps</a>
             <a class="quick-link" id="link-osm" target="_blank"><i class="fas fa-globe"></i> OpenStreetMap</a>
             <a class="quick-link" id="link-stview" target="_blank"><i class="fas fa-street-view"></i> Street View</a>
             <a class="quick-link" onclick="app.copyCoords()"><i class="fas fa-copy"></i> Salin Koordinat</a>
           </div>
-          <!-- Editable fields -->
+          <!-- Field completion bar -->
+          <div class="field-completion-bar" id="field-completion-bar">
+            <div class="fcb-row">
+              <span class="fcb-label">Kelengkapan kolom</span>
+              <span class="fcb-pct" id="fcb-pct">0%</span>
+            </div>
+            <div class="fcb-track"><div class="fcb-fill" id="fcb-fill" style="width:0%;background:var(--success)"></div></div>
+          </div>
           <div id="edit-fields"></div>
-          <!-- Readonly section -->
           <div id="readonly-section" class="readonly-section" style="display:none">
             <div class="readonly-label">Data asli</div>
             <div id="readonly-fields"></div>
@@ -599,9 +543,7 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 
 <div id="toast-container"></div>
 
-<!-- ================================================
-     MODALS
-     ================================================ -->
+<!-- MODALS -->
 
 <!-- Add Layer Modal -->
 <div class="modal-overlay" id="modal-layer">
@@ -611,7 +553,7 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
       <button class="btn btn-ghost btn-icon btn-sm" onclick="closeModal('modal-layer')"><i class="fas fa-times"></i></button>
     </div>
     <div class="modal-body">
-      <p style="color:var(--text2);margin-bottom:16px">Unggah shapefile ZIP untuk ditambahkan sebagai layer overlay pada peta. Data layer hanya ditampilkan — tidak dapat diedit.</p>
+      <p style="color:var(--text2);margin-bottom:16px">Unggah shapefile ZIP untuk ditambahkan sebagai layer overlay pada peta.</p>
       <div class="layer-upload-zone" id="layer-drop-zone">
         <i class="fas fa-plus" style="font-size:20px;margin-bottom:8px;display:block"></i>
         Letakkan Shapefile ZIP di sini atau klik untuk mencari
@@ -643,31 +585,19 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
     <div class="modal-body">
       <div class="export-option" onclick="app.exportCSV()">
         <div class="icon"><i class="fas fa-file-csv"></i></div>
-        <div>
-          <strong>Ekspor sebagai CSV</strong>
-          <span>Semua fitur dan atribut yang telah diedit dalam format CSV</span>
-        </div>
+        <div><strong>Ekspor sebagai CSV</strong><span>Semua fitur dan atribut yang telah diedit dalam format CSV</span></div>
       </div>
       <div class="export-option" onclick="app.exportGeoJSON()">
         <div class="icon"><i class="fas fa-code"></i></div>
-        <div>
-          <strong>Ekspor sebagai GeoJSON</strong>
-          <span>Geometri lengkap + atribut yang diedit dalam format GeoJSON — dapat diimpor ke QGIS, ArcGIS, dll.</span>
-        </div>
+        <div><strong>Ekspor sebagai GeoJSON</strong><span>Geometri lengkap + atribut yang diedit dalam format GeoJSON</span></div>
       </div>
       <div class="export-option" onclick="app.exportShapefile()">
         <div class="icon"><i class="fas fa-file-zipper"></i></div>
-        <div>
-          <strong>Ekspor sebagai Shapefile (.zip)</strong>
-          <span>Ekspor kembali ke format Shapefile ZIP (.shp, .dbf, .shx, .prj) dengan semua hasil edit — siap pakai di QGIS, ArcGIS, dll.</span>
-        </div>
+        <div><strong>Ekspor sebagai Shapefile (.zip)</strong><span>Ekspor kembali ke format Shapefile ZIP dengan semua hasil edit</span></div>
       </div>
       <div class="export-option" onclick="app.exportSession()">
         <div class="icon"><i class="fas fa-floppy-disk"></i></div>
-        <div>
-          <strong>Simpan Sesi (JSON)</strong>
-          <span>Simpan hasil edit untuk dilanjutkan nanti — muat kembali via Impor Sesi</span>
-        </div>
+        <div><strong>Simpan Sesi (JSON)</strong><span>Simpan hasil edit untuk dilanjutkan nanti</span></div>
       </div>
     </div>
     <div class="modal-ftr">
@@ -684,10 +614,10 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
       <button class="btn btn-ghost btn-icon btn-sm" onclick="closeModal('modal-import')"><i class="fas fa-times"></i></button>
     </div>
     <div class="modal-body">
-      <p style="color:var(--text2);margin-bottom:12px">Unggah file sesi JSON yang sebelumnya diekspor dari Identifikasi KKPRL untuk memulihkan hasil edit Anda.</p>
+      <p style="color:var(--text2);margin-bottom:12px">Unggah file sesi JSON yang sebelumnya diekspor untuk memulihkan hasil edit Anda.</p>
       <input type="file" id="import-file" accept=".json" style="width:100%;padding:8px 10px;border:1px dashed var(--border);border-radius:8px;background:var(--surface2);color:var(--text);font-size:13px"/>
       <p style="margin-top:12px;margin-bottom:6px;font-size:12px;color:var(--text2)">Atau tempel JSON langsung:</p>
-      <textarea id="import-text" rows="5" style="width:100%;padding:10px;font-family:var(--mono);font-size:11px;resize:vertical" placeholder='{"version":1,"records":[...]}'></textarea>
+      <textarea id="import-text" rows="5" style="width:100%;padding:10px;font-family:var(--mono);font-size:11px;resize:vertical" placeholder='{"version":1,"records":[]}'></textarea>
     </div>
     <div class="modal-ftr">
       <button class="btn" onclick="closeModal('modal-import')">Batal</button>
@@ -696,7 +626,7 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
   </div>
 </div>
 
-<!-- Column Map Modal -->
+<!-- Column Map Modal (first load only) -->
 <div class="modal-overlay" id="modal-colmap">
   <div class="modal wide">
     <div class="modal-hdr">
@@ -704,7 +634,7 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
     </div>
     <div class="modal-body">
       <div id="colmap-info" style="margin-bottom:14px;padding:10px 12px;background:var(--surface2);border-radius:var(--radius-sm);border:1px solid var(--border);font-size:12px;color:var(--text2)"></div>
-      <p style="font-size:12px;color:var(--text2);margin-bottom:14px">Pilih kolom label utama. Semua kolom lainnya dapat diedit. Anda juga dapat memilih kolom yang digunakan sebagai label tampilan awal.</p>
+      <p style="font-size:12px;color:var(--text2);margin-bottom:14px">Pilih kolom yang digunakan sebagai label tampilan utama. Anda dapat mengubah ini kapan saja dari panel sidebar.</p>
       <div class="colmap-grid" id="colmap-rows"></div>
     </div>
     <div class="modal-ftr">
@@ -715,9 +645,7 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 
 <script>
 'use strict';
-// ============================================================
-//  THEME + UTILITIES
-// ============================================================
+
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 function openModal(id){ document.getElementById(id).classList.add('open'); }
 
@@ -730,7 +658,7 @@ function toggleThemeEarly(){
 (function(){ const t = localStorage.getItem('geoedit_theme'); if(t) document.documentElement.setAttribute('data-theme', t); })();
 
 // ============================================================
-//  UPLOAD HANDLING
+//  UPLOAD
 // ============================================================
 let pendingGeoJSON = null;
 let allColumns = [];
@@ -768,15 +696,15 @@ async function handleMainFile(file){
   try {
     const buf = await file.arrayBuffer();
     setProgress(40, 'Memproses shapefile...');
-    if(typeof shp !== 'function') throw new Error('Library shpjs tidak termuat — periksa koneksi internet Anda');
+    if(typeof shp !== 'function') throw new Error('Library shpjs tidak termuat');
     const geojson = await Promise.resolve(shp(buf));
     setProgress(75, 'Memproses fitur...');
-    if(!geojson) throw new Error('shpjs mengembalikan null — ZIP mungkin rusak atau tidak ada .shp');
+    if(!geojson) throw new Error('shpjs mengembalikan null — ZIP mungkin rusak');
     let fc;
     if(Array.isArray(geojson)) fc = { type:'FeatureCollection', features: geojson.flatMap(g => g?.features || []) };
     else if(geojson.features) fc = geojson;
     else fc = { type:'FeatureCollection', features: [geojson] };
-    if(!fc.features || fc.features.length === 0){ showUploadError('Tidak ada fitur ditemukan. Pastikan ZIP berisi .shp, .dbf, .shx'); return; }
+    if(!fc.features || fc.features.length === 0){ showUploadError('Tidak ada fitur ditemukan.'); return; }
     setProgress(100, `Selesai — ${fc.features.length} fitur dimuat`);
     pendingGeoJSON = fc;
     allColumns = Object.keys(fc.features[0].properties || {});
@@ -794,7 +722,6 @@ function showColMapModal(){
   document.getElementById('colmap-info').innerHTML =
     `<strong>${fc.features.length}</strong> fitur · Geometri: <code style="font-family:var(--mono)">${geomType}</code>` +
     (allColumns.length ? ` · Kolom: <code style="font-family:var(--mono)">${allColumns.join(', ')}</code>` : ' · Tidak ada kolom atribut');
-
   const cont = document.getElementById('colmap-rows');
   cont.innerHTML = '';
   cont.insertAdjacentHTML('beforeend', `<label class="colmap-label" for="label_col">Kolom label utama</label>`);
@@ -810,16 +737,15 @@ const layerDrop = document.getElementById('layer-drop-zone');
 const layerInput = document.getElementById('layer-file-input');
 let pendingLayerGeoJSON = null;
 
-layerDrop.addEventListener('dragover', e => { e.preventDefault(); layerDrop.style.borderColor = 'var(--accent)'; });
-layerDrop.addEventListener('dragleave', () => layerDrop.style.borderColor = '');
-layerDrop.addEventListener('drop', e => { e.preventDefault(); layerDrop.style.borderColor = ''; const f = e.dataTransfer.files[0]; if(f) handleLayerFile(f); });
+layerDrop.addEventListener('dragover', e => { e.preventDefault(); layerDrop.style.borderColor='var(--accent)'; });
+layerDrop.addEventListener('dragleave', () => layerDrop.style.borderColor='');
+layerDrop.addEventListener('drop', e => { e.preventDefault(); layerDrop.style.borderColor=''; const f=e.dataTransfer.files[0]; if(f) handleLayerFile(f); });
 layerInput.addEventListener('change', e => { if(e.target.files[0]) handleLayerFile(e.target.files[0]); });
 document.getElementById('layer-opacity').addEventListener('input', function(){ document.getElementById('layer-opacity-val').textContent = (+this.value).toFixed(2); });
 
 async function handleLayerFile(file){
   const statusEl = document.getElementById('layer-upload-status');
-  statusEl.style.display = 'block';
-  statusEl.textContent = 'Memuat...';
+  statusEl.style.display = 'block'; statusEl.textContent = 'Memuat...';
   document.getElementById('btn-add-layer').disabled = true;
   try {
     const buf = await file.arrayBuffer();
@@ -841,7 +767,7 @@ async function handleLayerFile(file){
 }
 
 // ============================================================
-//  MAIN APP CLASS
+//  MAIN APP
 // ============================================================
 class GeoEditApp {
   constructor(){
@@ -850,8 +776,6 @@ class GeoEditApp {
     this.selectedIdx = null;
     this.map = null;
     this.tileLayer = null;
-    this.labelLayer = null;
-    this.labelLayer2 = null;
     this.mainGeoLayer = null;
     this.highlightLayer = null;
     this.overlayLayers = [];
@@ -862,6 +786,11 @@ class GeoEditApp {
     this.mainLayerVisible = true;
     this.labelsVisible = true;
     this._features = [];
+    // Column filter state
+    this.colFilterCol = '';    // which column to filter by
+    this.colFilterMode = '';   // 'filled' | 'empty' | ''
+    this.colConfigOpen = true;
+    this.colFilterOpen = false;
     this._loadTheme();
     this._bindKeys();
   }
@@ -883,7 +812,6 @@ class GeoEditApp {
       const geom = feat.geometry || {};
       const [lng, lat] = this._centroid(geom);
       const row = { _i: i, _lng: lng, _lat: lat, _geomType: geom.type };
-      // ALL columns go in as editable strings
       this.allCols.forEach(c => {
         const v = props[c];
         row[c] = (v != null && v !== '') ? String(v) : '';
@@ -903,7 +831,7 @@ class GeoEditApp {
       if(t === 'Polygon'){ const r=geom.coordinates[0]; return [r.reduce((s,c)=>s+c[0],0)/r.length, r.reduce((s,c)=>s+c[1],0)/r.length]; }
       if(t === 'MultiPolygon'){
         let best=geom.coordinates[0][0];
-        geom.coordinates.forEach(p => { if(p[0].length>best.length) best=p[0]; });
+        geom.coordinates.forEach(p=>{ if(p[0].length>best.length) best=p[0]; });
         return [best.reduce((s,c)=>s+c[0],0)/best.length, best.reduce((s,c)=>s+c[1],0)/best.length];
       }
     } catch(e){}
@@ -916,9 +844,103 @@ class GeoEditApp {
     const mainName = document.getElementById('file-name-badge').textContent || 'layer';
     document.getElementById('main-layer-name').textContent = mainName;
     this._initMap();
+    this._populateLabelColSelect();
+    this._populateColFilterSelect();
     this.renderAll();
     this._bindSearch();
     this.toast(`${this.data.length} fitur berhasil dimuat`, 'success');
+  }
+
+  // ---- LABEL COL SELECT (always-visible config) ----
+  _populateLabelColSelect(){
+    const sel = document.getElementById('label-col-select');
+    sel.innerHTML = '<option value="">— tidak ada —</option>' +
+      this.allCols.map(c => `<option value="${c}"${c===this.labelCol?' selected':''}>${c}</option>`).join('');
+  }
+
+  setLabelCol(col){
+    this.labelCol = col || null;
+    this._buildMainLayer();
+    this.renderAll();
+    this.toast(`Label diubah ke: ${col || 'tidak ada'}`, 'info');
+  }
+
+  toggleColConfig(){
+    this.colConfigOpen = !this.colConfigOpen;
+    const panel = document.getElementById('col-config-panel');
+    const chev = document.getElementById('col-config-chevron');
+    if(this.colConfigOpen){
+      panel.classList.add('open');
+      chev.className = 'fas fa-chevron-up';
+    } else {
+      // Just hide body but keep panel visible with only header
+      // Toggle by removing/adding 'open' — but header is always part of panel
+      // Simpler: just shrink
+      const row = panel.querySelector('.col-config-row');
+      if(row) row.style.display = this.colConfigOpen ? '' : 'none';
+      chev.className = 'fas fa-chevron-down';
+    }
+    // Simpler approach: just toggle the row
+    const row = panel.querySelector('.col-config-row');
+    if(row) row.style.display = this.colConfigOpen ? '' : 'none';
+  }
+
+  // ---- COLUMN FILTER ----
+  _populateColFilterSelect(){
+    const sel = document.getElementById('col-filter-select');
+    sel.innerHTML = '<option value="">— pilih kolom —</option>' +
+      this.allCols.map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+
+  toggleColFilter(forceOpen){
+    if(forceOpen === true) this.colFilterOpen = false; // will flip
+    this.colFilterOpen = !this.colFilterOpen;
+    const panel = document.getElementById('col-filter-panel');
+    const chev = document.getElementById('col-filter-chevron');
+    const btn = document.getElementById('btn-col-filter');
+    if(this.colFilterOpen){
+      panel.classList.add('open');
+      chev.className = 'fas fa-chevron-up';
+      btn.style.color = 'var(--accent)';
+    } else {
+      panel.classList.remove('open');
+      chev.className = 'fas fa-chevron-down';
+      btn.style.color = '';
+    }
+  }
+
+  setColFilter(col, mode){
+    // col=null means keep current col, mode=null means keep current mode
+    if(col !== null) {
+      this.colFilterCol = col;
+      if(col) document.getElementById('col-filter-select').value = col;
+    }
+    if(mode !== null){
+      // Toggle: clicking active mode again clears it
+      if(this.colFilterMode === mode) mode = '';
+      this.colFilterMode = mode;
+    }
+
+    // Update pill styles
+    const pFilled = document.getElementById('cpill-filled');
+    const pEmpty = document.getElementById('cpill-empty');
+    pFilled.className = 'cpill' + (this.colFilterMode === 'filled' ? ' active-filled' : '');
+    pEmpty.className = 'cpill' + (this.colFilterMode === 'empty' ? ' active-empty' : '');
+
+    // Update summary
+    const summary = document.getElementById('col-filter-summary');
+    const btnColFilter = document.getElementById('btn-col-filter');
+    if(this.colFilterCol && this.colFilterMode){
+      summary.style.display = 'block';
+      const modeLabel = this.colFilterMode === 'filled' ? 'sudah terisi' : 'belum terisi';
+      summary.textContent = `Menampilkan: "${this.colFilterCol}" yang ${modeLabel}`;
+      btnColFilter.innerHTML = '<i class="fas fa-filter"></i> Kolom <span class="filter-badge">!</span>';
+    } else {
+      summary.style.display = 'none';
+      btnColFilter.innerHTML = '<i class="fas fa-filter"></i> Kolom';
+    }
+
+    this.renderAll();
   }
 
   // ---- MAP ----
@@ -933,89 +955,44 @@ class GeoEditApp {
 
   _setTileOSM(){
     if(this.tileLayer) this.map.removeLayer(this.tileLayer);
-    if(this.labelLayer){ this.map.removeLayer(this.labelLayer); this.labelLayer = null; }
-    if(this.labelLayer2){ this.map.removeLayer(this.labelLayer2); this.labelLayer2 = null; }
     this.tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution:'© OpenStreetMap', maxZoom:19 }).addTo(this.map);
   }
   _setTileSatellite(){
     if(this.tileLayer) this.map.removeLayer(this.tileLayer);
-    if(this.labelLayer){ this.map.removeLayer(this.labelLayer); this.labelLayer = null; }
-    if(this.labelLayer2){ this.map.removeLayer(this.labelLayer2); this.labelLayer2 = null; }
     this.tileLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution:'© Esri', maxZoom:19 }).addTo(this.map);
   }
   _setTileHybrid(){
     if(this.tileLayer) this.map.removeLayer(this.tileLayer);
-    if(this.labelLayer){ this.map.removeLayer(this.labelLayer); this.labelLayer = null; }
-    if(this.labelLayer2){ this.map.removeLayer(this.labelLayer2); this.labelLayer2 = null; }
-    // Google Maps hybrid tiles (lyrs=y = satellite + all labels, roads, POIs)
     this.tileLayer = L.tileLayer('https://mt{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-      subdomains: ['0','1','2','3'],
-      attribution: '© Google',
-      maxZoom: 21,
-      tileSize: 256
+      subdomains: ['0','1','2','3'], attribution:'© Google', maxZoom:21, tileSize:256
     }).addTo(this.map);
   }
 
-  setTile(btn){
-    document.querySelectorAll('.tile-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const t = btn.dataset.tile;
-    if(t === 'osm') this._setTileOSM();
-    else if(t === 'satellite') this._setTileSatellite();
-    else if(t === 'hybrid') this._setTileHybrid();
-  }
+  _isFilled(v){ return v && String(v).trim() !== '' && String(v).trim().toLowerCase() !== 'nan'; }
 
   _buildMainLayer(){
     if(!this.mainGeoLayer) return;
     this.mainGeoLayer.clearLayers();
     if(!this.mainLayerVisible) return;
-    const isFilled = v => v && String(v).trim() !== '' && String(v).trim().toLowerCase() !== 'nan';
     this._features.forEach((feat, i) => {
       const r = this.data[i];
       if(!feat.geometry) return;
       const t = feat.geometry.type;
       const isArea = t === 'Polygon' || t === 'MultiPolygon';
       const isLine = t === 'LineString' || t === 'MultiLineString';
-
       if(isArea || isLine){
-        const style = {
-          color: '#1570ef', weight: isLine ? 2.5 : 1.5,
-          fillColor: '#1570ef', fillOpacity: isArea ? 0.15 : 0,
-          opacity: 0.7
-        };
-        const layer = L.geoJSON(feat, {
-          style: () => style,
-          onEachFeature: (f, l) => {
-            l.on('click', () => this.selectFeature(i));
-          }
-        }).addTo(this.mainGeoLayer);
-
-        // Add centroid label if label column has value
-        if(isArea && r._lat != null && this.labelCol && this.labelsVisible){
-          const labelVal = r[this.labelCol];
-          if(isFilled(labelVal)){
-            const label = L.marker([r._lat, r._lng], {
-              icon: L.divIcon({
-                className: 'map-label',
-                html: `<span>${String(labelVal)}</span>`,
-                iconAnchor: [0, 0]
-              }),
-              interactive: false,
-              zIndexOffset: 50
-            });
-            this.mainGeoLayer.addLayer(label);
-          }
+        const style = { color:'#1570ef', weight: isLine?2.5:1.5, fillColor:'#1570ef', fillOpacity: isArea?0.15:0, opacity:0.7 };
+        L.geoJSON(feat, { style:()=>style, onEachFeature:(f,l)=>{ l.on('click', ()=>this.selectFeature(i)); } }).addTo(this.mainGeoLayer);
+        if(isArea && r._lat != null && this.labelCol && this.labelsVisible && this._isFilled(r[this.labelCol])){
+          const label = L.marker([r._lat, r._lng], { icon: L.divIcon({ className:'map-label', html:`<span>${String(r[this.labelCol])}</span>`, iconAnchor:[0,0] }), interactive:false, zIndexOffset:50 });
+          this.mainGeoLayer.addLayer(label);
         }
       } else if(t === 'Point' || t === 'MultiPoint'){
-        const [lng, lat] = [r._lng, r._lat];
-        if(lat != null){
-          const marker = L.circleMarker([lat, lng], {
-            radius: 6, color: '#fff', weight: 2, fillColor: '#1570ef', fillOpacity: 0.85
-          });
-          marker.on('click', () => this.selectFeature(i));
-          // Tooltip for points
-          if(this.labelCol && isFilled(r[this.labelCol])){
-            marker.bindTooltip(String(r[this.labelCol]), { permanent: false, direction:'top', className:'map-label', offset:[0,-8] });
+        if(r._lat != null){
+          const marker = L.circleMarker([r._lat, r._lng], { radius:6, color:'#fff', weight:2, fillColor:'#1570ef', fillOpacity:0.85 });
+          marker.on('click', ()=>this.selectFeature(i));
+          if(this.labelCol && this._isFilled(r[this.labelCol])){
+            marker.bindTooltip(String(r[this.labelCol]), { permanent:false, direction:'top', className:'map-label', offset:[0,-8] });
           }
           this.mainGeoLayer.addLayer(marker);
         }
@@ -1028,56 +1005,29 @@ class GeoEditApp {
     const feat = this._features[idx];
     if(!feat || !feat.geometry) return;
     const t = feat.geometry.type;
-    const isArea = t === 'Polygon' || t === 'MultiPolygon';
-    const isLine = t === 'LineString' || t === 'MultiLineString';
-    const isPoint = t === 'Point' || t === 'MultiPoint';
-
-    if(isArea){
-      L.geoJSON(feat, { style: () => ({ color:'#e53e3e', weight:2.5, fillColor:'#fc8181', fillOpacity:0.35, opacity:1 }) })
-        .addTo(this.highlightLayer);
-    } else if(isLine){
-      L.geoJSON(feat, { style: () => ({ color:'#e53e3e', weight:4, opacity:1 }) })
-        .addTo(this.highlightLayer);
-    } else if(isPoint){
-      const r = this.data[idx];
-      if(r._lat != null){
-        L.circleMarker([r._lat, r._lng], { radius:9, color:'#e53e3e', weight:3, fillColor:'#fc8181', fillOpacity:.8 })
-          .addTo(this.highlightLayer);
-      }
-    }
+    const isArea = t==='Polygon'||t==='MultiPolygon';
+    const isLine = t==='LineString'||t==='MultiLineString';
+    if(isArea) L.geoJSON(feat, { style:()=>({ color:'#e53e3e', weight:2.5, fillColor:'#fc8181', fillOpacity:0.35, opacity:1 }) }).addTo(this.highlightLayer);
+    else if(isLine) L.geoJSON(feat, { style:()=>({ color:'#e53e3e', weight:4, opacity:1 }) }).addTo(this.highlightLayer);
+    else { const r=this.data[idx]; if(r._lat!=null) L.circleMarker([r._lat,r._lng],{radius:9,color:'#e53e3e',weight:3,fillColor:'#fc8181',fillOpacity:.8}).addTo(this.highlightLayer); }
   }
 
   _fitAll(){
-    if(!this._features || !this._features.length) return;
-    try {
-      const bounds = L.geoJSON({ type:'FeatureCollection', features: this._features }).getBounds();
-      if(bounds.isValid()) this.map.fitBounds(bounds, { padding:[30,30] });
-    } catch(e){}
+    if(!this._features||!this._features.length) return;
+    try { const b=L.geoJSON({type:'FeatureCollection',features:this._features}).getBounds(); if(b.isValid()) this.map.fitBounds(b,{padding:[30,30]}); } catch(e){}
   }
-
   fitAll(){ this._fitAll(); }
 
   toggleMainLayer(){
     this.mainLayerVisible = !this.mainLayerVisible;
-    const btn = document.getElementById('main-layer-vis');
-    btn.innerHTML = this.mainLayerVisible ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    document.getElementById('main-layer-vis').innerHTML = this.mainLayerVisible ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
     this._buildMainLayer();
-    if(this.mainLayerVisible) this._highlightFeature(this.selectedIdx);
+    if(this.mainLayerVisible&&this.selectedIdx!=null) this._highlightFeature(this.selectedIdx);
   }
 
   toggleLabels(){
     this.labelsVisible = !this.labelsVisible;
     const btn = document.getElementById('main-label-toggle');
-    if(this.labelsVisible){
-      btn.innerHTML = '<i class="fas fa-tag"></i>';
-      btn.title = 'Sembunyikan label poligon';
-      btn.style.color = '';
-    } else {
-      btn.innerHTML = '<i class="fas fa-tag"></i>';
-      btn.title = 'Tampilkan label poligon';
-      btn.style.color = 'var(--text3)';
-      btn.style.opacity = '0.4';
-    }
     btn.style.opacity = this.labelsVisible ? '' : '0.4';
     this._buildMainLayer();
   }
@@ -1098,13 +1048,11 @@ class GeoEditApp {
     const opacity = parseFloat(document.getElementById('layer-opacity').value);
     const name = pendingLayerGeoJSON._name || 'Overlay';
     const id = 'overlay_' + Date.now();
-
     const geoLayer = L.geoJSON(pendingLayerGeoJSON, {
-      style: () => ({ color, weight:1.5, fillColor:color, fillOpacity:opacity, opacity:.9 }),
-      pointToLayer: (f, latlng) => L.circleMarker(latlng, { radius:5, color:'#fff', weight:1.5, fillColor:color, fillOpacity:.85 })
+      style:()=>({ color, weight:1.5, fillColor:color, fillOpacity:opacity, opacity:.9 }),
+      pointToLayer:(f,latlng)=>L.circleMarker(latlng,{radius:5,color:'#fff',weight:1.5,fillColor:color,fillOpacity:.85})
     }).addTo(this.map);
-
-    this.overlayLayers.push({ id, name, layer: geoLayer, color, visible: true });
+    this.overlayLayers.push({ id, name, layer:geoLayer, color, visible:true });
     this._renderLayerList();
     closeModal('modal-layer');
     this.toast(`Layer "${name}" ditambahkan`, 'success');
@@ -1112,77 +1060,58 @@ class GeoEditApp {
 
   _renderLayerList(){
     const list = document.getElementById('layers-list');
-    // Keep main layer item, rebuild overlays
-    const overlayItems = list.querySelectorAll('.overlay-layer-item');
-    overlayItems.forEach(el => el.remove());
-
-    this.overlayLayers.forEach(ol => {
+    list.querySelectorAll('.overlay-layer-item').forEach(el=>el.remove());
+    this.overlayLayers.forEach(ol=>{
       const div = document.createElement('div');
       div.className = 'layer-item overlay-layer-item';
       div.innerHTML = `
         <div class="layer-swatch" style="background:${ol.color}"></div>
         <span class="layer-name" title="${ol.name}">${ol.name}</span>
         <div class="layer-controls">
-          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.toggleOverlay('${ol.id}')" title="Toggle visibility">
-            <i class="fas ${ol.visible ? 'fa-eye' : 'fa-eye-slash'}"></i>
-          </button>
-          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.removeOverlay('${ol.id}')" title="Hapus layer" style="color:var(--danger)">
-            <i class="fas fa-trash"></i>
-          </button>
+          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.toggleOverlay('${ol.id}')"><i class="fas ${ol.visible?'fa-eye':'fa-eye-slash'}"></i></button>
+          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.removeOverlay('${ol.id}')" style="color:var(--danger)"><i class="fas fa-trash"></i></button>
         </div>`;
       list.appendChild(div);
     });
   }
 
   toggleOverlay(id){
-    const ol = this.overlayLayers.find(l => l.id === id);
-    if(!ol) return;
-    ol.visible = !ol.visible;
-    if(ol.visible) ol.layer.addTo(this.map);
-    else this.map.removeLayer(ol.layer);
+    const ol=this.overlayLayers.find(l=>l.id===id); if(!ol) return;
+    ol.visible=!ol.visible; if(ol.visible) ol.layer.addTo(this.map); else this.map.removeLayer(ol.layer);
     this._renderLayerList();
   }
 
   removeOverlay(id){
-    const idx = this.overlayLayers.findIndex(l => l.id === id);
-    if(idx === -1) return;
-    this.map.removeLayer(this.overlayLayers[idx].layer);
-    this.overlayLayers.splice(idx, 1);
-    this._renderLayerList();
-    this.toast('Layer dihapus', 'info');
+    const idx=this.overlayLayers.findIndex(l=>l.id===id); if(idx===-1) return;
+    this.map.removeLayer(this.overlayLayers[idx].layer); this.overlayLayers.splice(idx,1);
+    this._renderLayerList(); this.toast('Layer dihapus','info');
   }
 
   // ---- SELECT + DETAIL ----
   selectFeature(idx){
     this.selectedIdx = idx;
-    const r = this.data[idx];
-    if(!r) return;
+    const r = this.data[idx]; if(!r) return;
     this._renderDetail(r);
     this._renderList();
     this._highlightFeature(idx);
-    // Pan map to feature
     const feat = this._features[idx];
     if(feat){
-      try {
-        const bounds = L.geoJSON(feat).getBounds();
-        if(bounds.isValid()) this.map.fitBounds(bounds, { maxZoom:15, padding:[20,20], animate:true });
-      } catch(e){ if(r._lat != null) this.map.setView([r._lat, r._lng], Math.max(this.map.getZoom(), 13)); }
+      try { const b=L.geoJSON(feat).getBounds(); if(b.isValid()) this.map.fitBounds(b,{maxZoom:15,padding:[20,20],animate:true}); }
+      catch(e){ if(r._lat!=null) this.map.setView([r._lat,r._lng],Math.max(this.map.getZoom(),13)); }
     }
     const el = document.querySelector(`.feat-item[data-i="${idx}"]`);
-    if(el) el.scrollIntoView({ block:'nearest', behavior:'smooth' });
+    if(el) el.scrollIntoView({block:'nearest',behavior:'smooth'});
   }
 
   _renderDetail(r){
     document.getElementById('detail-empty').style.display = 'none';
     document.getElementById('detail-content').style.display = 'flex';
-    const isFilled = v => v && String(v).trim() !== '' && String(v).trim().toLowerCase() !== 'nan';
 
-    const mainVal = this.labelCol && isFilled(r[this.labelCol]) ? r[this.labelCol] : null;
+    const mainVal = this.labelCol && this._isFilled(r[this.labelCol]) ? r[this.labelCol] : null;
     document.getElementById('dh-title').textContent = mainVal || `Feature #${r._i + 1}`;
     document.getElementById('dh-geom').textContent = r._geomType || 'Unknown';
     document.getElementById('dh-coord').textContent = r._lat != null ? `${(+r._lat).toFixed(5)}, ${(+r._lng).toFixed(5)}` : 'Tidak ada koordinat';
 
-    // Quick links
     if(r._lat != null){
       document.getElementById('link-gmaps').href = `https://maps.google.com/?q=${r._lat},${r._lng}`;
       document.getElementById('link-osm').href = `https://www.openstreetmap.org/?mlat=${r._lat}&mlon=${r._lng}&zoom=16`;
@@ -1192,21 +1121,37 @@ class GeoEditApp {
       document.getElementById('quick-links').style.display = 'none';
     }
 
-    // ALL fields editable — NaN shown as blank
+    // Field completion bar
+    const filledCount = this.allCols.filter(c => this._isFilled(r[c])).length;
+    const pct = this.allCols.length ? Math.round(filledCount / this.allCols.length * 100) : 0;
+    document.getElementById('fcb-pct').textContent = pct + '%';
+    const fill = document.getElementById('fcb-fill');
+    fill.style.width = pct + '%';
+    fill.style.background = pct === 100 ? 'var(--success)' : pct > 0 ? 'var(--warning)' : 'var(--danger)';
+
+    // Editable fields — each has a fill indicator dot
     const ef = document.getElementById('edit-fields');
     ef.innerHTML = '';
     this.allCols.forEach(col => {
       const raw = r[col];
-      const val = isFilled(raw) ? String(raw) : '';
+      const val = this._isFilled(raw) ? String(raw) : '';
+      const isFull = val !== '';
       const safeId = 'ef_' + col.replace(/[^a-zA-Z0-9_]/g,'_');
       const isLong = val.length > 60;
+      const dotColor = isFull ? 'var(--success)' : 'var(--danger)';
+      // Highlight if this is the column being filtered on
+      const isFilterCol = col === this.colFilterCol && this.colFilterCol !== '';
+      const labelStyle = isFilterCol ? 'color:var(--accent);font-weight:800;' : '';
       ef.insertAdjacentHTML('beforeend', `
         <div class="field-group">
-          <div class="field-label">${col}</div>
+          <div class="field-label" style="${labelStyle}">
+            <span class="fill-indicator" style="background:${dotColor}"></span>
+            ${col}${isFilterCol ? ' <span style="font-size:9px;background:var(--accent);color:#fff;padding:1px 5px;border-radius:3px;margin-left:2px">filter aktif</span>' : ''}
+          </div>
           <div class="field-input-wrap">
             ${isLong
-              ? `<textarea id="${safeId}" data-col="${col}" oninput="this.classList.add('changed')">${val.replace(/</g,'&lt;')}</textarea>`
-              : `<input type="text" id="${safeId}" data-col="${col}" value="${val.replace(/"/g,'&quot;')}" autocomplete="off" oninput="this.classList.add('changed')"/>`
+              ? `<textarea id="${safeId}" data-col="${col}" oninput="this.classList.add('changed');app._updateFieldDot(this,'${col}')">${val.replace(/</g,'&lt;')}</textarea>`
+              : `<input type="text" id="${safeId}" data-col="${col}" value="${val.replace(/"/g,'&quot;')}" autocomplete="off" oninput="this.classList.add('changed');app._updateFieldDot(this,'${col}')"/>`
             }
           </div>
         </div>`);
@@ -1215,36 +1160,61 @@ class GeoEditApp {
     document.getElementById('readonly-section').style.display = 'none';
   }
 
-  saveFields(){
-    const r = this.data.find(d => d._i === this.selectedIdx);
+  // Live-update the fill dot as user types
+  _updateFieldDot(el, col){
+    const val = el.value.trim();
+    const fg = el.closest('.field-group');
+    if(!fg) return;
+    const dot = fg.querySelector('.fill-indicator');
+    if(dot) dot.style.background = val ? 'var(--success)' : 'var(--danger)';
+    // Update completion bar live
+    const r = this.data.find(d=>d._i===this.selectedIdx);
     if(!r) return;
+    // Count currently typed values
+    let filledCount = 0;
+    this.allCols.forEach(c => {
+      const inputEl = document.getElementById('ef_' + c.replace(/[^a-zA-Z0-9_]/g,'_'));
+      const v = inputEl ? inputEl.value.trim() : r[c];
+      if(this._isFilled(v)) filledCount++;
+    });
+    const pct = this.allCols.length ? Math.round(filledCount/this.allCols.length*100) : 0;
+    document.getElementById('fcb-pct').textContent = pct + '%';
+    const fill = document.getElementById('fcb-fill');
+    fill.style.width = pct + '%';
+    fill.style.background = pct===100 ? 'var(--success)' : pct>0 ? 'var(--warning)' : 'var(--danger)';
+  }
+
+  saveFields(){
+    const r = this.data.find(d=>d._i===this.selectedIdx); if(!r) return;
     this._pushHistory();
-    document.querySelectorAll('#edit-fields [data-col]').forEach(el => {
-      const col = el.dataset.col;
-      if(col){ r[col] = el.value.trim(); el.classList.remove('changed'); }
+    document.querySelectorAll('#edit-fields [data-col]').forEach(el=>{
+      const col=el.dataset.col; if(col){ r[col]=el.value.trim(); el.classList.remove('changed'); }
     });
     this.renderAll();
-    this._buildMainLayer(); // refresh labels
-    if(this.selectedIdx != null) this._highlightFeature(this.selectedIdx);
+    this._buildMainLayer();
+    if(this.selectedIdx!=null) this._highlightFeature(this.selectedIdx);
     this.toast('Tersimpan!');
     this.navigate(1);
   }
 
   clearFields(){
-    document.querySelectorAll('#edit-fields [data-col]').forEach(el => { el.value = ''; el.classList.add('changed'); });
+    document.querySelectorAll('#edit-fields [data-col]').forEach(el=>{ el.value=''; el.classList.add('changed'); });
+    // Update all dots
+    document.querySelectorAll('#edit-fields .fill-indicator').forEach(dot=>{ dot.style.background='var(--danger)'; });
+    document.getElementById('fcb-pct').textContent = '0%';
+    const fill = document.getElementById('fcb-fill');
+    fill.style.width = '0%'; fill.style.background = 'var(--danger)';
   }
 
   copyCoords(){
-    const r = this.data.find(d => d._i === this.selectedIdx);
-    if(r && r._lat != null){
-      navigator.clipboard.writeText(`${r._lat}, ${r._lng}`).then(() => this.toast('Koordinat disalin', 'info'));
-    }
+    const r=this.data.find(d=>d._i===this.selectedIdx);
+    if(r&&r._lat!=null) navigator.clipboard.writeText(`${r._lat}, ${r._lng}`).then(()=>this.toast('Koordinat disalin','info'));
   }
 
   navigate(dir){
-    const fi = this.filtered.findIndex(r => r._i === this.selectedIdx);
-    const next = fi + dir;
-    if(next >= 0 && next < this.filtered.length) this.selectFeature(this.filtered[next]._i);
+    const fi=this.filtered.findIndex(r=>r._i===this.selectedIdx);
+    const next=fi+dir;
+    if(next>=0&&next<this.filtered.length) this.selectFeature(this.filtered[next]._i);
   }
 
   // ---- RENDER ----
@@ -1255,258 +1225,220 @@ class GeoEditApp {
   }
 
   _applyFilters(){
-    const q = (document.getElementById('search-input')?.value || '').toLowerCase();
-    const status = document.querySelector('.qf-btn.active')?.dataset.f || 'all';
-    this.filtered = this.data.filter(r => {
-      if(q){ const hay = Object.values(r).join(' ').toLowerCase(); if(!hay.includes(q)) return false; }
-      if(status !== 'all' && this._status(r) !== status) return false;
+    const q=(document.getElementById('search-input')?.value||'').toLowerCase();
+    const status=document.querySelector('.qf-btn.active')?.dataset.f||'all';
+    this.filtered = this.data.filter(r=>{
+      if(q){ const hay=Object.values(r).join(' ').toLowerCase(); if(!hay.includes(q)) return false; }
+      if(status!=='all'&&this._status(r)!==status) return false;
+      // Per-column filter
+      if(this.colFilterCol&&this.colFilterMode){
+        const val=r[this.colFilterCol];
+        const filled=this._isFilled(val);
+        if(this.colFilterMode==='filled'&&!filled) return false;
+        if(this.colFilterMode==='empty'&&filled) return false;
+      }
       return true;
     });
   }
 
   _status(r){
     if(!this.allCols.length) return 'empty';
-    // "NaN" counts as empty
-    const isFilled = v => v && String(v).trim() !== '' && String(v).trim().toLowerCase() !== 'nan';
-    const filled = this.allCols.filter(c => isFilled(r[c])).length;
-    if(filled === 0) return 'empty';
-    if(filled === this.allCols.length) return 'complete';
+    const filled=this.allCols.filter(c=>this._isFilled(r[c])).length;
+    if(filled===0) return 'empty';
+    if(filled===this.allCols.length) return 'complete';
     return 'partial';
   }
 
-  _statusColor(s){ return s === 'complete' ? 'var(--success)' : s === 'partial' ? 'var(--warning)' : 'var(--border2)'; }
+  _statusColor(s){ return s==='complete'?'var(--success)':s==='partial'?'var(--warning)':'var(--border2)'; }
 
   _renderList(){
-    const list = document.getElementById('feature-list');
-    document.getElementById('list-count').textContent = this.filtered.length;
-    list.innerHTML = '';
-    const isFilled = v => v && String(v).trim() !== '' && String(v).trim().toLowerCase() !== 'nan';
-    this.filtered.forEach(r => {
-      const s = this._status(r);
-      const rawName = this.labelCol ? r[this.labelCol] : null;
-      const name = isFilled(rawName) ? rawName : null;
-      const div = document.createElement('div');
-      div.className = `feat-item status-${s}${r._i === this.selectedIdx ? ' active' : ''}`;
-      div.dataset.i = r._i;
-      const sub = this.allCols.slice(0, 3).filter(c => c !== this.labelCol).map(c => isFilled(r[c]) ? r[c] : null).filter(Boolean).join(' · ');
-      div.innerHTML = `
+    const list=document.getElementById('feature-list');
+    document.getElementById('list-count').textContent=this.filtered.length;
+    list.innerHTML='';
+    this.filtered.forEach(r=>{
+      const s=this._status(r);
+      const rawName=this.labelCol?r[this.labelCol]:null;
+      const name=this._isFilled(rawName)?rawName:null;
+      const div=document.createElement('div');
+      div.className=`feat-item status-${s}${r._i===this.selectedIdx?' active':''}`;
+      div.dataset.i=r._i;
+      const sub=this.allCols.slice(0,3).filter(c=>c!==this.labelCol).map(c=>this._isFilled(r[c])?r[c]:null).filter(Boolean).join(' · ');
+
+      // Per-column fill indicator in list item (only when col filter is set)
+      let colIndicatorHtml = '';
+      if(this.colFilterCol){
+        const isFilled=this._isFilled(r[this.colFilterCol]);
+        const color=isFilled?'var(--success)':'var(--danger)';
+        const icon=isFilled?'✓':'✗';
+        colIndicatorHtml=`<span style="font-size:10px;font-weight:700;color:${color};flex-shrink:0">${icon}</span>`;
+      }
+
+      div.innerHTML=`
         <div class="status-dot" style="background:${this._statusColor(s)}"></div>
-        <div class="feat-num">${r._i + 1}</div>
+        <div class="feat-num">${r._i+1}</div>
         <div class="feat-body">
-          <div class="feat-name${name?'':' unnamed'}">${name || '(tanpa nama)'}</div>
-          ${sub ? `<div class="feat-sub">${sub}</div>` : ''}
-        </div>`;
-      div.addEventListener('click', () => this.selectFeature(r._i));
+          <div class="feat-name${name?'':' unnamed'}">${name||'(tanpa nama)'}</div>
+          ${sub?`<div class="feat-sub">${sub}</div>`:''}
+        </div>
+        ${colIndicatorHtml}`;
+      div.addEventListener('click',()=>this.selectFeature(r._i));
       list.appendChild(div);
     });
   }
 
   _updateStats(){
-    const total = this.data.length;
-    const statuses = this.data.map(r => this._status(r));
-    const empty = statuses.filter(s=>s==='empty').length;
-    const partial = statuses.filter(s=>s==='partial').length;
-    const complete = statuses.filter(s=>s==='complete').length;
-    const pct = total ? Math.round(complete / total * 100) : 0;
-    document.getElementById('stat-total').textContent = total;
-    document.getElementById('stat-empty').textContent = empty;
-    document.getElementById('stat-partial').textContent = partial;
-    document.getElementById('stat-complete').textContent = complete;
-    document.getElementById('progress-bar').style.width = pct + '%';
-    document.getElementById('progress-text').textContent = pct + '%';
+    const total=this.data.length;
+    const statuses=this.data.map(r=>this._status(r));
+    const empty=statuses.filter(s=>s==='empty').length;
+    const partial=statuses.filter(s=>s==='partial').length;
+    const complete=statuses.filter(s=>s==='complete').length;
+    const pct=total?Math.round(complete/total*100):0;
+    document.getElementById('stat-total').textContent=total;
+    document.getElementById('stat-empty').textContent=empty;
+    document.getElementById('stat-partial').textContent=partial;
+    document.getElementById('stat-complete').textContent=complete;
+    document.getElementById('progress-bar').style.width=pct+'%';
+    document.getElementById('progress-text').textContent=pct+'%';
   }
 
   setFilter(btn){
-    document.querySelectorAll('.qf-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.qf-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     this.renderAll();
   }
 
-  _bindSearch(){
-    document.getElementById('search-input').addEventListener('input', () => this.renderAll());
-  }
+  _bindSearch(){ document.getElementById('search-input').addEventListener('input',()=>this.renderAll()); }
 
   // ---- HISTORY ----
   _pushHistory(){
-    const snap = this.data.map(r => { const s={_i:r._i}; this.allCols.forEach(c=>s[c]=r[c]); return s; });
-    this.history.push(JSON.stringify(snap));
-    if(this.history.length > 60) this.history.shift();
-    this.histFuture = [];
+    const snap=this.data.map(r=>{const s={_i:r._i};this.allCols.forEach(c=>s[c]=r[c]);return s;});
+    this.history.push(JSON.stringify(snap)); if(this.history.length>60) this.history.shift();
+    this.histFuture=[];
   }
   undo(){
-    if(!this.history.length){ this.toast('Tidak ada yang dapat dibatalkan','warning'); return; }
-    const cur = this.data.map(r => { const s={_i:r._i}; this.allCols.forEach(c=>s[c]=r[c]); return s; });
+    if(!this.history.length){this.toast('Tidak ada yang dapat dibatalkan','warning');return;}
+    const cur=this.data.map(r=>{const s={_i:r._i};this.allCols.forEach(c=>s[c]=r[c]);return s;});
     this.histFuture.push(JSON.stringify(cur));
-    const prev = JSON.parse(this.history.pop());
-    prev.forEach(snap => { const r = this.data.find(d=>d._i===snap._i); if(r) this.allCols.forEach(c=>r[c]=snap[c]); });
-    this.renderAll(); this.toast('Dibatalkan', 'info');
-    if(this.selectedIdx != null){ const r = this.data.find(d=>d._i===this.selectedIdx); if(r) this._renderDetail(r); }
+    const prev=JSON.parse(this.history.pop());
+    prev.forEach(snap=>{const r=this.data.find(d=>d._i===snap._i);if(r)this.allCols.forEach(c=>r[c]=snap[c]);});
+    this.renderAll();this.toast('Dibatalkan','info');
+    if(this.selectedIdx!=null){const r=this.data.find(d=>d._i===this.selectedIdx);if(r)this._renderDetail(r);}
   }
   redo(){
-    if(!this.histFuture.length){ this.toast('Tidak ada yang dapat diulangi','warning'); return; }
+    if(!this.histFuture.length){this.toast('Tidak ada yang dapat diulangi','warning');return;}
     this._pushHistory();
-    const nxt = JSON.parse(this.histFuture.pop());
-    nxt.forEach(snap => { const r = this.data.find(d=>d._i===snap._i); if(r) this.allCols.forEach(c=>r[c]=snap[c]); });
-    this.renderAll(); this.toast('Diulangi', 'info');
-    if(this.selectedIdx != null){ const r = this.data.find(d=>d._i===this.selectedIdx); if(r) this._renderDetail(r); }
+    const nxt=JSON.parse(this.histFuture.pop());
+    nxt.forEach(snap=>{const r=this.data.find(d=>d._i===snap._i);if(r)this.allCols.forEach(c=>r[c]=snap[c]);});
+    this.renderAll();this.toast('Diulangi','info');
+    if(this.selectedIdx!=null){const r=this.data.find(d=>d._i===this.selectedIdx);if(r)this._renderDetail(r);}
   }
 
   // ---- EXPORT ----
   openExport(){ openModal('modal-export'); }
 
   exportCSV(){
-    const cols = [...this.allCols, 'LONGITUDE', 'LATITUDE'];
-    const header = cols.join(',');
-    const rows = this.data.map(r => cols.map(c => {
-      const v = c==='LONGITUDE' ? r._lng : c==='LATITUDE' ? r._lat : r[c];
-      return '"' + String(v ?? '').replace(/"/g,'""') + '"';
+    const cols=[...this.allCols,'LONGITUDE','LATITUDE'];
+    const header=cols.join(',');
+    const rows=this.data.map(r=>cols.map(c=>{
+      const v=c==='LONGITUDE'?r._lng:c==='LATITUDE'?r._lat:r[c];
+      return '"'+String(v??'').replace(/"/g,'""')+'"';
     }).join(','));
-    this._download([header,...rows].join('\n'), 'kkprl_export_'+Date.now()+'.csv', 'text/csv;charset=utf-8;');
-    closeModal('modal-export');
-    this.toast('CSV berhasil diekspor!');
+    this._download([header,...rows].join('\n'),'kkprl_export_'+Date.now()+'.csv','text/csv;charset=utf-8;');
+    closeModal('modal-export'); this.toast('CSV berhasil diekspor!');
   }
 
   exportGeoJSON(){
-    const fc = {
-      type: 'FeatureCollection',
-      features: this._features.map((feat, i) => {
-        const r = this.data[i];
-        const props = {};
-        this.allCols.forEach(c => { props[c] = r[c]; });
-        return { ...feat, properties: props };
-      })
-    };
-    this._download(JSON.stringify(fc, null, 2), 'kkprl_export_'+Date.now()+'.geojson', 'application/json');
-    closeModal('modal-export');
-    this.toast('GeoJSON berhasil diekspor!');
+    const fc={type:'FeatureCollection',features:this._features.map((feat,i)=>{
+      const r=this.data[i]; const props={};
+      this.allCols.forEach(c=>{props[c]=r[c];});
+      return{...feat,properties:props};
+    })};
+    this._download(JSON.stringify(fc,null,2),'kkprl_export_'+Date.now()+'.geojson','application/json');
+    closeModal('modal-export'); this.toast('GeoJSON berhasil diekspor!');
   }
 
   async exportShapefile(){
     try {
-      if(typeof shpwrite === 'undefined') throw new Error('Library shp-write tidak termuat');
-
-      // Build GeoJSON FeatureCollection with edited properties
-      const fc = {
-        type: 'FeatureCollection',
-        features: this._features.map((feat, i) => {
-          const r = this.data[i];
-          const props = {};
-          this.allCols.forEach(c => {
-            // DBF max field name length = 10 chars
-            const key = String(c).substring(0, 10);
-            props[key] = r[c] ?? '';
-          });
-          return { ...feat, properties: props };
-        })
-      };
-
-      // shp-write options
-      const opts = {
-        folder: 'kkprl_export',
-        types: {
-          point:   'POINT',
-          polygon: 'POLYGON',
-          line:    'POLYLINE'
-        }
-      };
-
-      // shp-write returns a base64 zip string
-      const zip = shpwrite.zip(fc, opts);
-
-      // Convert base64 to blob and trigger download
-      const byteChars = atob(zip);
-      const byteNums = new Array(byteChars.length);
-      for(let i = 0; i < byteChars.length; i++) byteNums[i] = byteChars.charCodeAt(i);
-      const byteArr = new Uint8Array(byteNums);
-      const blob = new Blob([byteArr], { type: 'application/zip' });
-
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'kkprl_export_' + Date.now() + '.zip';
-      a.click();
-
-      closeModal('modal-export');
-      this.toast('Shapefile ZIP berhasil diekspor!', 'success');
-    } catch(err) {
-      this.toast('Gagal ekspor Shapefile: ' + err.message, 'danger');
-    }
+      if(typeof shpwrite==='undefined') throw new Error('Library shp-write tidak termuat');
+      const fc={type:'FeatureCollection',features:this._features.map((feat,i)=>{
+        const r=this.data[i]; const props={};
+        this.allCols.forEach(c=>{const key=String(c).substring(0,10);props[key]=r[c]??'';});
+        return{...feat,properties:props};
+      })};
+      const opts={folder:'kkprl_export',types:{point:'POINT',polygon:'POLYGON',line:'POLYLINE'}};
+      const zip=shpwrite.zip(fc,opts);
+      const byteChars=atob(zip); const byteNums=new Array(byteChars.length);
+      for(let i=0;i<byteChars.length;i++) byteNums[i]=byteChars.charCodeAt(i);
+      const blob=new Blob([new Uint8Array(byteNums)],{type:'application/zip'});
+      const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+      a.download='kkprl_export_'+Date.now()+'.zip'; a.click();
+      closeModal('modal-export'); this.toast('Shapefile ZIP berhasil diekspor!','success');
+    } catch(err){ this.toast('Gagal ekspor Shapefile: '+err.message,'danger'); }
   }
 
   exportSession(){
-    const payload = {
-      version: 2, exportedAt: new Date().toISOString(),
-      labelCol: this.labelCol, allCols: this.allCols,
-      records: this.data.map(r => { const s={_i:r._i}; this.allCols.forEach(c=>s[c]=r[c]); return s; })
-    };
-    this._download(JSON.stringify(payload, null, 2), 'kkprl_sesi_'+new Date().toISOString().slice(0,10)+'.json', 'application/json');
-    closeModal('modal-export');
-    this.toast('Sesi berhasil disimpan!');
+    const payload={version:2,exportedAt:new Date().toISOString(),labelCol:this.labelCol,allCols:this.allCols,
+      records:this.data.map(r=>{const s={_i:r._i};this.allCols.forEach(c=>s[c]=r[c]);return s;})};
+    this._download(JSON.stringify(payload,null,2),'kkprl_sesi_'+new Date().toISOString().slice(0,10)+'.json','application/json');
+    closeModal('modal-export'); this.toast('Sesi berhasil disimpan!');
   }
 
-  _download(content, filename, mime){
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([content],{type:mime}));
-    a.download = filename;
-    a.click();
+  _download(content,filename,mime){
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([content],{type:mime}));
+    a.download=filename; a.click();
   }
 
   // ---- IMPORT ----
   openImport(){ document.getElementById('import-file').value=''; document.getElementById('import-text').value=''; openModal('modal-import'); }
   confirmImport(){
-    const fileEl = document.getElementById('import-file');
-    const textEl = document.getElementById('import-text');
-    const apply = text => {
+    const fileEl=document.getElementById('import-file');
+    const textEl=document.getElementById('import-text');
+    const apply=text=>{
       try {
-        const p = JSON.parse(text);
+        const p=JSON.parse(text);
         if(!Array.isArray(p.records)) throw new Error('Format tidak valid');
         this._pushHistory();
-        p.records.forEach(snap => {
-          const r = this.data.find(d => d._i === snap._i);
-          if(!r) return;
-          this.allCols.forEach(c => { if(snap[c] !== undefined) r[c] = snap[c]; });
+        p.records.forEach(snap=>{
+          const r=this.data.find(d=>d._i===snap._i); if(!r) return;
+          this.allCols.forEach(c=>{if(snap[c]!==undefined) r[c]=snap[c];});
         });
-        closeModal('modal-import');
-        this.toast('Sesi berhasil diimpor!');
-        this.renderAll();
-      } catch(err){ this.toast('Gagal mengimpor: ' + err.message, 'danger'); }
+        closeModal('modal-import'); this.toast('Sesi berhasil diimpor!'); this.renderAll();
+      } catch(err){ this.toast('Gagal mengimpor: '+err.message,'danger'); }
     };
-    if(fileEl.files[0]){ const rd=new FileReader(); rd.onload=e=>apply(e.target.result); rd.readAsText(fileEl.files[0]); }
-    else if(textEl.value.trim()){ apply(textEl.value.trim()); }
-    else { this.toast('Tidak ada data untuk diimpor','warning'); }
+    if(fileEl.files[0]){const rd=new FileReader();rd.onload=e=>apply(e.target.result);rd.readAsText(fileEl.files[0]);}
+    else if(textEl.value.trim()){apply(textEl.value.trim());}
+    else{this.toast('Tidak ada data untuk diimpor','warning');}
   }
 
   // ---- NEW FILE ----
-  loadNewFile(){
-    if(!confirm('Muat file baru? Sesi saat ini akan hilang.')) return;
-    location.reload();
-  }
+  loadNewFile(){ if(!confirm('Muat file baru? Sesi saat ini akan hilang.')) return; location.reload(); }
 
   // ---- THEME ----
   toggleTheme(){ toggleThemeEarly(); }
-  _loadTheme(){ const t=localStorage.getItem('geoedit_theme'); if(t) document.documentElement.setAttribute('data-theme',t); }
+  _loadTheme(){ const t=localStorage.getItem('geoedit_theme');if(t) document.documentElement.setAttribute('data-theme',t); }
 
   // ---- KEYBOARD ----
   _bindKeys(){
-    document.addEventListener('keydown', e => {
+    document.addEventListener('keydown',e=>{
       if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
-      if(e.key==='ArrowDown'){ e.preventDefault(); this.navigate(1); }
-      if(e.key==='ArrowUp'){ e.preventDefault(); this.navigate(-1); }
-      if((e.ctrlKey||e.metaKey)&&e.key==='z'){ e.preventDefault(); this.undo(); }
-      if((e.ctrlKey||e.metaKey)&&e.key==='y'){ e.preventDefault(); this.redo(); }
-      if(e.key==='Escape'){ closeModal('modal-colmap'); closeModal('modal-export'); closeModal('modal-import'); closeModal('modal-layer'); }
+      if(e.key==='ArrowDown'){e.preventDefault();this.navigate(1);}
+      if(e.key==='ArrowUp'){e.preventDefault();this.navigate(-1);}
+      if((e.ctrlKey||e.metaKey)&&e.key==='z'){e.preventDefault();this.undo();}
+      if((e.ctrlKey||e.metaKey)&&e.key==='y'){e.preventDefault();this.redo();}
+      if(e.key==='Escape'){closeModal('modal-colmap');closeModal('modal-export');closeModal('modal-import');closeModal('modal-layer');}
     });
   }
 
   // ---- TOAST ----
-  toast(msg, type='success'){
-    const ct = document.getElementById('toast-container');
-    const el = document.createElement('div');
-    el.className = 'toast';
-    const icons = { success:'fa-circle-check', warning:'fa-triangle-exclamation', danger:'fa-circle-xmark', info:'fa-circle-info' };
-    const colors = { success:'var(--success)', warning:'var(--warning)', danger:'var(--danger)', info:'var(--accent)' };
-    el.innerHTML = `<i class="fas ${icons[type]||icons.success}" style="color:${colors[type]||colors.success};flex-shrink:0"></i> <span>${msg}</span>`;
+  toast(msg,type='success'){
+    const ct=document.getElementById('toast-container');
+    const el=document.createElement('div'); el.className='toast';
+    const icons={success:'fa-circle-check',warning:'fa-triangle-exclamation',danger:'fa-circle-xmark',info:'fa-circle-info'};
+    const colors={success:'var(--success)',warning:'var(--warning)',danger:'var(--danger)',info:'var(--accent)'};
+    el.innerHTML=`<i class="fas ${icons[type]||icons.success}" style="color:${colors[type]||colors.success};flex-shrink:0"></i> <span>${msg}</span>`;
     ct.appendChild(el);
-    setTimeout(() => { el.classList.add('leave'); setTimeout(()=>el.remove(),300); }, 3000);
+    setTimeout(()=>{el.classList.add('leave');setTimeout(()=>el.remove(),300);},3000);
   }
 }
 
