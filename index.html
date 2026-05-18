@@ -531,6 +531,7 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
         <div class="detail-actions">
           <button class="btn btn-primary" style="flex:1" onclick="app.saveFields()"><i class="fas fa-check"></i> Simpan & Lanjut</button>
           <button class="btn btn-ghost btn-icon" onclick="app.clearFields()" title="Bersihkan semua kolom"><i class="fas fa-eraser"></i></button>
+          <button class="btn btn-danger btn-icon" onclick="app.deleteFeature()" title="Hapus fitur ini"><i class="fas fa-trash"></i></button>
         </div>
         <div class="detail-nav">
           <button class="btn btn-sm btn-ghost" onclick="app.navigate(-1)"><i class="fas fa-arrow-left"></i> Sebelumnya</button>
@@ -1178,6 +1179,34 @@ class GeoEditApp {
     document.getElementById('fcb-pct').textContent = '0%';
     const fill = document.getElementById('fcb-fill');
     fill.style.width = '0%'; fill.style.background = 'var(--danger)';
+  }
+
+  deleteFeature(){
+    if(this.selectedIdx == null) return;
+    const r = this.data.find(d => d._i === this.selectedIdx);
+    const label = (this.labelCol && this._isFilled(r?.[this.labelCol])) ? r[this.labelCol] : `Feature #${(r?._i ?? 0) + 1}`;
+    if(!confirm(`Hapus "${label}"?\n\nFitur ini akan dihapus dari peta dan daftar. Tindakan ini dapat dibatalkan dengan Ctrl+Z.`)) return;
+
+    this._pushHistory();
+
+    // Remove from data and _features by original index
+    const origIdx = this.selectedIdx;
+    this.data = this.data.filter(d => d._i !== origIdx);
+    this._features = this._features.filter((_, i) => i !== origIdx);
+
+    // Re-index _i values to stay contiguous
+    this.data.forEach((d, newPos) => { d._i = newPos; });
+
+    // Clear selection and hide detail panel
+    this.selectedIdx = null;
+    document.getElementById('detail-empty').style.display = '';
+    document.getElementById('detail-content').style.display = 'none';
+
+    // Refresh map and list
+    this._buildMainLayer();
+    this.highlightLayer.clearLayers();
+    this.renderAll();
+    this.toast(`"${label}" berhasil dihapus`, 'info');
   }
 
   copyCoords(){
