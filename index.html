@@ -787,8 +787,8 @@ class GeoEditApp {
     this.labelsVisible = true;
     this._features = [];
     // Column filter state
-    this.colFilterCol = '';    // which column to filter by
-    this.colFilterMode = '';   // 'filled' | 'empty' | ''
+    this.colFilterCol = '';
+    this.colFilterMode = '';
     this.colConfigOpen = true;
     this.colFilterOpen = false;
     this._loadTheme();
@@ -851,7 +851,7 @@ class GeoEditApp {
     this.toast(`${this.data.length} fitur berhasil dimuat`, 'success');
   }
 
-  // ---- LABEL COL SELECT (always-visible config) ----
+  // ---- LABEL COL SELECT ----
   _populateLabelColSelect(){
     const sel = document.getElementById('label-col-select');
     sel.innerHTML = '<option value="">— tidak ada —</option>' +
@@ -867,22 +867,10 @@ class GeoEditApp {
 
   toggleColConfig(){
     this.colConfigOpen = !this.colConfigOpen;
-    const panel = document.getElementById('col-config-panel');
     const chev = document.getElementById('col-config-chevron');
-    if(this.colConfigOpen){
-      panel.classList.add('open');
-      chev.className = 'fas fa-chevron-up';
-    } else {
-      // Just hide body but keep panel visible with only header
-      // Toggle by removing/adding 'open' — but header is always part of panel
-      // Simpler: just shrink
-      const row = panel.querySelector('.col-config-row');
-      if(row) row.style.display = this.colConfigOpen ? '' : 'none';
-      chev.className = 'fas fa-chevron-down';
-    }
-    // Simpler approach: just toggle the row
-    const row = panel.querySelector('.col-config-row');
+    const row = document.getElementById('col-config-panel').querySelector('.col-config-row');
     if(row) row.style.display = this.colConfigOpen ? '' : 'none';
+    chev.className = this.colConfigOpen ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
   }
 
   // ---- COLUMN FILTER ----
@@ -893,7 +881,7 @@ class GeoEditApp {
   }
 
   toggleColFilter(forceOpen){
-    if(forceOpen === true) this.colFilterOpen = false; // will flip
+    if(forceOpen === true) this.colFilterOpen = false;
     this.colFilterOpen = !this.colFilterOpen;
     const panel = document.getElementById('col-filter-panel');
     const chev = document.getElementById('col-filter-chevron');
@@ -910,24 +898,18 @@ class GeoEditApp {
   }
 
   setColFilter(col, mode){
-    // col=null means keep current col, mode=null means keep current mode
     if(col !== null) {
       this.colFilterCol = col;
       if(col) document.getElementById('col-filter-select').value = col;
     }
     if(mode !== null){
-      // Toggle: clicking active mode again clears it
       if(this.colFilterMode === mode) mode = '';
       this.colFilterMode = mode;
     }
-
-    // Update pill styles
     const pFilled = document.getElementById('cpill-filled');
     const pEmpty = document.getElementById('cpill-empty');
     pFilled.className = 'cpill' + (this.colFilterMode === 'filled' ? ' active-filled' : '');
     pEmpty.className = 'cpill' + (this.colFilterMode === 'empty' ? ' active-empty' : '');
-
-    // Update summary
     const summary = document.getElementById('col-filter-summary');
     const btnColFilter = document.getElementById('btn-col-filter');
     if(this.colFilterCol && this.colFilterMode){
@@ -939,7 +921,6 @@ class GeoEditApp {
       summary.style.display = 'none';
       btnColFilter.innerHTML = '<i class="fas fa-filter"></i> Kolom';
     }
-
     this.renderAll();
   }
 
@@ -1121,7 +1102,6 @@ class GeoEditApp {
       document.getElementById('quick-links').style.display = 'none';
     }
 
-    // Field completion bar
     const filledCount = this.allCols.filter(c => this._isFilled(r[c])).length;
     const pct = this.allCols.length ? Math.round(filledCount / this.allCols.length * 100) : 0;
     document.getElementById('fcb-pct').textContent = pct + '%';
@@ -1129,7 +1109,6 @@ class GeoEditApp {
     fill.style.width = pct + '%';
     fill.style.background = pct === 100 ? 'var(--success)' : pct > 0 ? 'var(--warning)' : 'var(--danger)';
 
-    // Editable fields — each has a fill indicator dot
     const ef = document.getElementById('edit-fields');
     ef.innerHTML = '';
     this.allCols.forEach(col => {
@@ -1139,7 +1118,6 @@ class GeoEditApp {
       const safeId = 'ef_' + col.replace(/[^a-zA-Z0-9_]/g,'_');
       const isLong = val.length > 60;
       const dotColor = isFull ? 'var(--success)' : 'var(--danger)';
-      // Highlight if this is the column being filtered on
       const isFilterCol = col === this.colFilterCol && this.colFilterCol !== '';
       const labelStyle = isFilterCol ? 'color:var(--accent);font-weight:800;' : '';
       ef.insertAdjacentHTML('beforeend', `
@@ -1160,17 +1138,14 @@ class GeoEditApp {
     document.getElementById('readonly-section').style.display = 'none';
   }
 
-  // Live-update the fill dot as user types
   _updateFieldDot(el, col){
     const val = el.value.trim();
     const fg = el.closest('.field-group');
     if(!fg) return;
     const dot = fg.querySelector('.fill-indicator');
     if(dot) dot.style.background = val ? 'var(--success)' : 'var(--danger)';
-    // Update completion bar live
     const r = this.data.find(d=>d._i===this.selectedIdx);
     if(!r) return;
-    // Count currently typed values
     let filledCount = 0;
     this.allCols.forEach(c => {
       const inputEl = document.getElementById('ef_' + c.replace(/[^a-zA-Z0-9_]/g,'_'));
@@ -1199,7 +1174,6 @@ class GeoEditApp {
 
   clearFields(){
     document.querySelectorAll('#edit-fields [data-col]').forEach(el=>{ el.value=''; el.classList.add('changed'); });
-    // Update all dots
     document.querySelectorAll('#edit-fields .fill-indicator').forEach(dot=>{ dot.style.background='var(--danger)'; });
     document.getElementById('fcb-pct').textContent = '0%';
     const fill = document.getElementById('fcb-fill');
@@ -1230,7 +1204,6 @@ class GeoEditApp {
     this.filtered = this.data.filter(r=>{
       if(q){ const hay=Object.values(r).join(' ').toLowerCase(); if(!hay.includes(q)) return false; }
       if(status!=='all'&&this._status(r)!==status) return false;
-      // Per-column filter
       if(this.colFilterCol&&this.colFilterMode){
         const val=r[this.colFilterCol];
         const filled=this._isFilled(val);
@@ -1264,7 +1237,6 @@ class GeoEditApp {
       div.dataset.i=r._i;
       const sub=this.allCols.slice(0,3).filter(c=>c!==this.labelCol).map(c=>this._isFilled(r[c])?r[c]:null).filter(Boolean).join(' · ');
 
-      // Per-column fill indicator in list item (only when col filter is set)
       let colIndicatorHtml = '';
       if(this.colFilterCol){
         const isFilled=this._isFilled(r[this.colFilterCol]);
@@ -1357,23 +1329,63 @@ class GeoEditApp {
     closeModal('modal-export'); this.toast('GeoJSON berhasil diekspor!');
   }
 
+  // ✅ FIXED: handles Promise<ArrayBuffer> from shp-write v0.4+, as well as legacy base64 string
   async exportShapefile(){
     try {
-      if(typeof shpwrite==='undefined') throw new Error('Library shp-write tidak termuat');
-      const fc={type:'FeatureCollection',features:this._features.map((feat,i)=>{
-        const r=this.data[i]; const props={};
-        this.allCols.forEach(c=>{const key=String(c).substring(0,10);props[key]=r[c]??'';});
-        return{...feat,properties:props};
-      })};
-      const opts={folder:'kkprl_export',types:{point:'POINT',polygon:'POLYGON',line:'POLYLINE'}};
-      const zip=shpwrite.zip(fc,opts);
-      const byteChars=atob(zip); const byteNums=new Array(byteChars.length);
-      for(let i=0;i<byteChars.length;i++) byteNums[i]=byteChars.charCodeAt(i);
-      const blob=new Blob([new Uint8Array(byteNums)],{type:'application/zip'});
-      const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-      a.download='kkprl_export_'+Date.now()+'.zip'; a.click();
-      closeModal('modal-export'); this.toast('Shapefile ZIP berhasil diekspor!','success');
-    } catch(err){ this.toast('Gagal ekspor Shapefile: '+err.message,'danger'); }
+      if(typeof shpwrite === 'undefined') throw new Error('Library shp-write tidak termuat');
+
+      const fc = {
+        type: 'FeatureCollection',
+        features: this._features.map((feat, i) => {
+          const r = this.data[i];
+          const props = {};
+          // Shapefile field names are max 10 chars
+          this.allCols.forEach(c => {
+            const key = String(c).substring(0, 10);
+            props[key] = r[c] ?? '';
+          });
+          return { ...feat, properties: props };
+        })
+      };
+
+      const opts = {
+        folder: 'kkprl_export',
+        types: { point: 'POINT', polygon: 'POLYGON', line: 'POLYLINE' }
+      };
+
+      // shp-write v0.4+ returns Promise<ArrayBuffer>; older versions return base64 string
+      let result = shpwrite.zip(fc, opts);
+      if (result && typeof result.then === 'function') {
+        result = await result;
+      }
+
+      let blob;
+      if (result instanceof ArrayBuffer) {
+        blob = new Blob([result], { type: 'application/zip' });
+      } else if (result instanceof Uint8Array) {
+        blob = new Blob([result], { type: 'application/zip' });
+      } else if (typeof result === 'string') {
+        // Legacy: base64-encoded string
+        const byteChars = atob(result);
+        const byteNums = new Uint8Array(byteChars.length);
+        for (let i = 0; i < byteChars.length; i++) byteNums[i] = byteChars.charCodeAt(i);
+        blob = new Blob([byteNums], { type: 'application/zip' });
+      } else {
+        throw new Error('Format output shp-write tidak dikenali: ' + typeof result);
+      }
+
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'kkprl_export_' + Date.now() + '.zip';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+
+      closeModal('modal-export');
+      this.toast('Shapefile ZIP berhasil diekspor!', 'success');
+    } catch(err) {
+      console.error('exportShapefile error:', err);
+      this.toast('Gagal ekspor Shapefile: ' + err.message, 'danger');
+    }
   }
 
   exportSession(){
