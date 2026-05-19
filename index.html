@@ -169,32 +169,24 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 .search-box i { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 12px; pointer-events: none; }
 .search-box input { width: 100%; padding: 7px 9px 7px 28px; }
 
-/* STATUS FILTERS (all/kosong/partial/lengkap) */
 .quick-filters { display: flex; gap: 5px; flex-wrap: wrap; }
 .qf-btn { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); transition: all .12s; }
 .qf-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-/* COLUMN FILTER PANEL */
 #col-filter-panel {
   padding: 8px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0;
   display: none; flex-direction: column; gap: 6px;
 }
 #col-filter-panel.open { display: flex; }
-.col-filter-header {
-  display: flex; align-items: center; justify-content: space-between;
-}
+.col-filter-header { display: flex; align-items: center; justify-content: space-between; }
 .col-filter-header span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--text3); }
 .col-filter-row { display: flex; gap: 6px; align-items: center; }
 .col-filter-row select { flex: 1; padding: 5px 8px; font-size: 12px; }
 .col-filter-pills { display: flex; gap: 4px; }
-.cpill {
-  padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 500;
-  cursor: pointer; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); transition: all .12s;
-}
+.cpill { padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); transition: all .12s; }
 .cpill.active-filled { background: var(--success); color: #fff; border-color: var(--success); }
 .cpill.active-empty { background: var(--danger); color: #fff; border-color: var(--danger); }
 
-/* COLUMN CONFIG PANEL (label col picker) */
 #col-config-panel {
   padding: 8px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0;
   display: none; flex-direction: column; gap: 6px;
@@ -229,10 +221,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 .feat-sub { font-size: 11px; color: var(--text3); margin-top: 1px; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
-/* feat-item col-fill indicators */
-.col-fill-dots { display: flex; gap: 2px; flex-wrap: wrap; max-width: 40px; }
-.col-fill-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-
 /* MAP */
 #map-panel { flex: 1; position: relative; }
 #map { width: 100%; height: 100%; }
@@ -256,11 +244,7 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 
 #detail-scroll { flex: 1; overflow-y: auto; padding: 14px 16px; }
 
-/* Field completion bar in detail */
-.field-completion-bar {
-  margin-bottom: 12px; padding: 8px 10px; border-radius: var(--radius-sm);
-  background: var(--surface2); border: 1px solid var(--border);
-}
+.field-completion-bar { margin-bottom: 12px; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--surface2); border: 1px solid var(--border); }
 .fcb-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; font-size: 11px; }
 .fcb-label { color: var(--text2); font-weight: 500; }
 .fcb-pct { font-weight: 700; color: var(--accent); font-family: var(--mono); }
@@ -319,20 +303,68 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 .export-option strong { display: block; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
 .export-option span { font-size: 12px; color: var(--text2); }
 
+/* MAP LABELS */
 .map-label { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; pointer-events: none; }
 .map-label span { display: inline-block; background: linear-gradient(135deg, #1570ef, #0e4fc4); color: #fff; font-size: 10px; font-weight: 700; font-family: 'DM Sans', sans-serif; white-space: nowrap; padding: 2px 8px; border-radius: 20px; box-shadow: 0 2px 6px rgba(21,112,239,0.55), 0 0 0 1.5px rgba(255,255,255,0.35); letter-spacing: .3px; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
 [data-theme="dark"] .map-label span { background: linear-gradient(135deg, #4493f8, #1570ef); box-shadow: 0 2px 6px rgba(68,147,248,0.6), 0 0 0 1.5px rgba(255,255,255,0.2); }
+
+/* Overlay label styles — dynamic color applied via data-color attr */
+.ol-label { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; pointer-events: none; }
+.ol-label span { display: inline-block; font-size: 10px; font-weight: 700; font-family: 'DM Sans', sans-serif; white-space: nowrap; padding: 2px 8px; border-radius: 20px; letter-spacing: .3px; text-shadow: 0 1px 2px rgba(0,0,0,.35); box-shadow: 0 2px 6px rgba(0,0,0,0.25), 0 0 0 1.5px rgba(255,255,255,0.3); }
 
 .coord-label { font-family: var(--mono); font-size: 10px; color: var(--text3); }
 
 [data-theme="dark"] .leaflet-container { background: #1a1a2e; }
 [data-theme="dark"] .leaflet-popup-content-wrapper { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 [data-theme="dark"] .leaflet-popup-tip { background: var(--surface); }
-
 .leaflet-interactive:focus { outline: none; }
 
-/* active col filter badge on button */
 .filter-badge { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; font-size: 9px; font-weight: 700; width: 14px; height: 14px; border-radius: 50%; margin-left: 2px; }
+
+/* ── SYMBOLOGY MODAL ── */
+.sym-section { margin-bottom: 18px; }
+.sym-section-title {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px;
+  color: var(--text3); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border);
+}
+.sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sym-field { display: flex; flex-direction: column; gap: 4px; }
+.sym-field label { font-size: 11px; font-weight: 600; color: var(--text2); }
+.sym-field input[type="color"] { width: 100%; height: 32px; cursor: pointer; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 2px; background: var(--surface); }
+.sym-field input[type="range"] { width: 100%; accent-color: var(--accent); }
+.sym-field select { padding: 6px 8px; font-size: 12px; }
+.sym-field input[type="number"] { padding: 6px 8px; width: 100%; }
+.sym-range-wrap { display: flex; align-items: center; gap: 8px; }
+.sym-range-wrap input[type="range"] { flex: 1; }
+.sym-range-val { font-family: var(--mono); font-size: 11px; color: var(--accent); font-weight: 600; min-width: 28px; text-align: right; }
+.sym-mode-tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+.sym-mode-tab {
+  flex: 1; padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+  background: var(--surface2); color: var(--text2); font-size: 12px; font-weight: 500;
+  cursor: pointer; text-align: center; transition: all .12s;
+}
+.sym-mode-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.cat-panel { display: none; }
+.cat-panel.visible { display: block; }
+.cat-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.cat-table th { text-align: left; padding: 5px 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text3); border-bottom: 1px solid var(--border); }
+.cat-table td { padding: 4px 6px; border-bottom: 1px solid var(--border); }
+.cat-table tr:last-child td { border-bottom: none; }
+.cat-color-pick { width: 28px; height: 20px; cursor: pointer; border: 1px solid var(--border); border-radius: 3px; padding: 1px; background: var(--surface); }
+.cat-val-label { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--mono); font-size: 11px; }
+
+/* layer item expanded symbology row */
+.overlay-sym-btn {
+  padding: 2px 6px; font-size: 10px; font-weight: 600; border-radius: 4px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text2);
+  cursor: pointer; display: inline-flex; align-items: center; gap: 3px; transition: all .12s;
+  font-family: var(--font);
+}
+.overlay-sym-btn:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+
+/* label toggle active state */
+.btn-label-active { background: var(--accent-light) !important; color: var(--accent) !important; border-color: var(--accent) !important; }
 </style>
 </head>
 <body>
@@ -406,7 +438,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
   <div id="main">
     <!-- SIDEBAR -->
     <div id="sidebar">
-      <!-- Layers -->
       <div id="layers-panel">
         <div class="layers-header">
           <span>Layer</span>
@@ -424,7 +455,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
         </div>
       </div>
 
-      <!-- Column Config Panel (label col picker — always visible) -->
       <div id="col-config-panel" class="open">
         <div class="col-config-header">
           <span><i class="fas fa-tag" style="font-size:9px"></i> Kolom Label</span>
@@ -436,7 +466,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
         </div>
       </div>
 
-      <!-- Column Filter Panel (per-column fill filter) -->
       <div id="col-filter-panel">
         <div class="col-filter-header">
           <span><i class="fas fa-filter" style="font-size:9px"></i> Filter per Kolom</span>
@@ -454,7 +483,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
         <div id="col-filter-summary" style="font-size:11px;color:var(--text3);display:none"></div>
       </div>
 
-      <!-- Filters -->
       <div id="filter-area">
         <div class="search-box">
           <i class="fas fa-search"></i>
@@ -468,7 +496,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
         </div>
       </div>
 
-      <!-- List meta -->
       <div id="list-meta">
         <span><strong id="list-count">0</strong> fitur ditampilkan</span>
         <div class="list-meta-actions">
@@ -479,7 +506,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
         </div>
       </div>
 
-      <!-- Feature list -->
       <div id="feature-list"></div>
     </div>
 
@@ -514,7 +540,6 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
             <a class="quick-link" id="link-stview" target="_blank"><i class="fas fa-street-view"></i> Street View</a>
             <a class="quick-link" onclick="app.copyCoords()"><i class="fas fa-copy"></i> Salin Koordinat</a>
           </div>
-          <!-- Field completion bar -->
           <div class="field-completion-bar" id="field-completion-bar">
             <div class="fcb-row">
               <span class="fcb-label">Kelengkapan kolom</span>
@@ -544,7 +569,9 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
 
 <div id="toast-container"></div>
 
-<!-- MODALS -->
+<!-- ══════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════ -->
 
 <!-- Add Layer Modal -->
 <div class="modal-overlay" id="modal-layer">
@@ -561,17 +588,166 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
         <input type="file" id="layer-file-input" accept=".zip" multiple/>
       </div>
       <div id="layer-upload-status" style="margin-top:10px;font-size:12px;color:var(--text2);display:none"></div>
-      <div id="layer-color-row" style="display:none;margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-        <label style="font-size:12px;font-weight:600">Warna layer:</label>
-        <input type="color" id="layer-color-pick" value="#e67e22" style="width:40px;height:28px;cursor:pointer;border:1px solid var(--border);border-radius:4px;padding:2px"/>
-        <label style="font-size:12px;font-weight:600">Transparansi:</label>
-        <input type="range" id="layer-opacity" min="0.1" max="1" step="0.05" value="0.4" style="width:100px"/>
-        <span id="layer-opacity-val">0.4</span>
+      <div id="layer-color-row" style="display:none;margin-top:14px;flex-direction:column;gap:10px">
+        <!-- Single color mode -->
+        <div id="sym-single-section">
+          <div class="sym-section-title"><i class="fas fa-palette" style="font-size:10px"></i> Tampilan Dasar</div>
+          <div class="sym-grid">
+            <div class="sym-field">
+              <label>Warna isi</label>
+              <input type="color" id="layer-color-pick" value="#e67e22"/>
+            </div>
+            <div class="sym-field">
+              <label>Warna garis</label>
+              <input type="color" id="layer-stroke-color" value="#c0392b"/>
+            </div>
+            <div class="sym-field">
+              <label>Transparansi isi</label>
+              <div class="sym-range-wrap">
+                <input type="range" id="layer-opacity" min="0" max="1" step="0.05" value="0.4"/>
+                <span class="sym-range-val" id="layer-opacity-val">0.40</span>
+              </div>
+            </div>
+            <div class="sym-field">
+              <label>Tebal garis</label>
+              <div class="sym-range-wrap">
+                <input type="range" id="layer-stroke-width" min="0.5" max="6" step="0.5" value="1.5"/>
+                <span class="sym-range-val" id="layer-stroke-width-val">1.5</span>
+              </div>
+            </div>
+            <div class="sym-field">
+              <label>Radius titik (px)</label>
+              <div class="sym-range-wrap">
+                <input type="range" id="layer-point-radius" min="2" max="20" step="1" value="6"/>
+                <span class="sym-range-val" id="layer-point-radius-val">6</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal-ftr">
       <button class="btn" onclick="closeModal('modal-layer')">Tutup</button>
       <button class="btn btn-primary" onclick="app.confirmAddLayer()" id="btn-add-layer" disabled><i class="fas fa-plus"></i> Tambah Layer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Symbology Modal (for existing overlay layers) -->
+<div class="modal-overlay" id="modal-sym">
+  <div class="modal wide">
+    <div class="modal-hdr">
+      <h3 id="sym-modal-title"><i class="fas fa-palette"></i> Symbology & Label</h3>
+      <button class="btn btn-ghost btn-icon btn-sm" onclick="closeModal('modal-sym')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+
+      <!-- Mode tabs -->
+      <div class="sym-section">
+        <div class="sym-section-title"><i class="fas fa-swatchbook" style="font-size:10px"></i> Mode Tampilan</div>
+        <div class="sym-mode-tabs">
+          <div class="sym-mode-tab active" id="sym-tab-single" onclick="app.setSymMode('single')">
+            <i class="fas fa-circle"></i> Warna Tunggal
+          </div>
+          <div class="sym-mode-tab" id="sym-tab-cat" onclick="app.setSymMode('categorized')">
+            <i class="fas fa-palette"></i> Berdasar Kolom
+          </div>
+        </div>
+
+        <!-- Single color panel -->
+        <div id="sym-single-panel">
+          <div class="sym-grid">
+            <div class="sym-field">
+              <label>Warna isi</label>
+              <input type="color" id="sym-fill-color" value="#e67e22" oninput="app.previewSym()"/>
+            </div>
+            <div class="sym-field">
+              <label>Warna garis</label>
+              <input type="color" id="sym-stroke-color" value="#c0392b" oninput="app.previewSym()"/>
+            </div>
+            <div class="sym-field">
+              <label>Transparansi isi</label>
+              <div class="sym-range-wrap">
+                <input type="range" id="sym-opacity" min="0" max="1" step="0.05" value="0.4" oninput="this.nextElementSibling.textContent=(+this.value).toFixed(2);app.previewSym()"/>
+                <span class="sym-range-val">0.40</span>
+              </div>
+            </div>
+            <div class="sym-field">
+              <label>Tebal garis</label>
+              <div class="sym-range-wrap">
+                <input type="range" id="sym-stroke-width" min="0.5" max="6" step="0.5" value="1.5" oninput="this.nextElementSibling.textContent=(+this.value).toFixed(1);app.previewSym()"/>
+                <span class="sym-range-val">1.5</span>
+              </div>
+            </div>
+            <div class="sym-field">
+              <label>Radius titik (px)</label>
+              <div class="sym-range-wrap">
+                <input type="range" id="sym-point-radius" min="2" max="20" step="1" value="6" oninput="this.nextElementSibling.textContent=this.value;app.previewSym()"/>
+                <span class="sym-range-val">6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categorized panel -->
+        <div id="sym-cat-panel" class="cat-panel">
+          <div class="sym-field" style="margin-bottom:10px">
+            <label>Kolom kategori</label>
+            <select id="sym-cat-col" onchange="app.buildCatTable()" style="padding:6px 8px;font-size:12px;margin-top:4px"></select>
+          </div>
+          <div style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-sm)">
+            <table class="cat-table">
+              <thead><tr><th>Nilai</th><th>Warna isi</th><th>Garis</th></tr></thead>
+              <tbody id="sym-cat-tbody"></tbody>
+            </table>
+          </div>
+          <p style="font-size:11px;color:var(--text3);margin-top:6px"><i class="fas fa-info-circle"></i> Klik warna untuk mengubah per kategori.</p>
+        </div>
+      </div>
+
+      <!-- Labels section -->
+      <div class="sym-section">
+        <div class="sym-section-title"><i class="fas fa-tag" style="font-size:10px"></i> Label pada Peta</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <label style="font-size:12px;font-weight:600;color:var(--text2)">Aktifkan label</label>
+            <button class="btn btn-sm" id="sym-label-toggle" onclick="app.toggleSymLabel()" style="min-width:90px">
+              <i class="fas fa-tag"></i> Nonaktif
+            </button>
+          </div>
+          <div id="sym-label-options" style="display:none;flex-direction:column;gap:10px">
+            <div class="sym-grid">
+              <div class="sym-field">
+                <label>Kolom label</label>
+                <select id="sym-label-col" style="padding:6px 8px;font-size:12px;"></select>
+              </div>
+              <div class="sym-field">
+                <label>Warna label</label>
+                <input type="color" id="sym-label-color" value="#1570ef"/>
+              </div>
+              <div class="sym-field">
+                <label>Ukuran font (px)</label>
+                <div class="sym-range-wrap">
+                  <input type="range" id="sym-label-size" min="8" max="18" step="1" value="10" oninput="this.nextElementSibling.textContent=this.value"/>
+                  <span class="sym-range-val">10</span>
+                </div>
+              </div>
+              <div class="sym-field">
+                <label>Hanya area (polygon)</label>
+                <select id="sym-label-geomonly" style="padding:6px 8px;font-size:12px;">
+                  <option value="0">Tampilkan semua</option>
+                  <option value="1" selected>Hanya polygon/area</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-ftr">
+      <button class="btn" onclick="closeModal('modal-sym')">Batal</button>
+      <button class="btn btn-primary" onclick="app.applySymbology()"><i class="fas fa-check"></i> Terapkan</button>
     </div>
   </div>
 </div>
@@ -627,7 +803,7 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:foc
   </div>
 </div>
 
-<!-- Column Map Modal (first load only) -->
+<!-- Column Map Modal -->
 <div class="modal-overlay" id="modal-colmap">
   <div class="modal wide">
     <div class="modal-hdr">
@@ -742,11 +918,20 @@ layerDrop.addEventListener('dragover', e => { e.preventDefault(); layerDrop.styl
 layerDrop.addEventListener('dragleave', () => layerDrop.style.borderColor='');
 layerDrop.addEventListener('drop', e => { e.preventDefault(); layerDrop.style.borderColor=''; const f=e.dataTransfer.files[0]; if(f) handleLayerFile(f); });
 layerInput.addEventListener('change', e => { if(e.target.files[0]) handleLayerFile(e.target.files[0]); });
-document.getElementById('layer-opacity').addEventListener('input', function(){ document.getElementById('layer-opacity-val').textContent = (+this.value).toFixed(2); });
+
+// Range display wiring for Add Layer modal
+['layer-opacity','layer-stroke-width','layer-point-radius'].forEach(id => {
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.addEventListener('input', function(){
+    const valEl = document.getElementById(id + '-val');
+    if(valEl) valEl.textContent = parseFloat(this.value).toFixed(id === 'layer-point-radius' ? 0 : 2);
+  });
+});
 
 async function handleLayerFile(file){
   const statusEl = document.getElementById('layer-upload-status');
-  statusEl.style.display = 'block'; statusEl.textContent = 'Memuat...';
+  statusEl.style.display = 'block'; statusEl.textContent = 'Memuat...'; statusEl.style.color = 'var(--text2)';
   document.getElementById('btn-add-layer').disabled = true;
   try {
     const buf = await file.arrayBuffer();
@@ -757,6 +942,7 @@ async function handleLayerFile(file){
     else fc = { type:'FeatureCollection', features: [geojson] };
     pendingLayerGeoJSON = fc;
     pendingLayerGeoJSON._name = file.name.replace(/\.zip$/i,'');
+    pendingLayerGeoJSON._cols = Object.keys(fc.features[0]?.properties || {});
     statusEl.textContent = `✓ ${fc.features.length} fitur dimuat dari "${file.name}"`;
     statusEl.style.color = 'var(--success)';
     document.getElementById('layer-color-row').style.display = 'flex';
@@ -765,6 +951,20 @@ async function handleLayerFile(file){
     statusEl.textContent = 'Kesalahan: ' + err.message;
     statusEl.style.color = 'var(--danger)';
   }
+}
+
+// ============================================================
+//  COLOR UTILITIES
+// ============================================================
+const CAT_PALETTE = [
+  '#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6',
+  '#1abc9c','#e67e22','#34495e','#e91e63','#00bcd4',
+  '#ff5722','#607d8b','#8bc34a','#ff9800','#673ab7'
+];
+
+function hexToRgba(hex, alpha){
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${alpha})`;
 }
 
 // ============================================================
@@ -779,7 +979,7 @@ class GeoEditApp {
     this.tileLayer = null;
     this.mainGeoLayer = null;
     this.highlightLayer = null;
-    this.overlayLayers = [];
+    this.overlayLayers = [];    // { id, name, geojson, layer, labelLayer, sym, visible }
     this.labelCol = null;
     this.allCols = [];
     this.history = [];
@@ -787,16 +987,18 @@ class GeoEditApp {
     this.mainLayerVisible = true;
     this.labelsVisible = true;
     this._features = [];
-    // Column filter state
     this.colFilterCol = '';
     this.colFilterMode = '';
     this.colConfigOpen = true;
     this.colFilterOpen = false;
+    // Symbology editor state
+    this._symTargetId = null;
+    this._symLabelEnabled = false;
+    this._symMode = 'single'; // 'single' | 'categorized'
     this._loadTheme();
     this._bindKeys();
   }
 
-  // ---- INIT ----
   confirmColMap(){
     const labelColEl = document.getElementById('label_col');
     this.labelCol = labelColEl ? labelColEl.value : (allColumns[0] || null);
@@ -888,25 +1090,15 @@ class GeoEditApp {
     const chev = document.getElementById('col-filter-chevron');
     const btn = document.getElementById('btn-col-filter');
     if(this.colFilterOpen){
-      panel.classList.add('open');
-      chev.className = 'fas fa-chevron-up';
-      btn.style.color = 'var(--accent)';
+      panel.classList.add('open'); chev.className = 'fas fa-chevron-up'; btn.style.color = 'var(--accent)';
     } else {
-      panel.classList.remove('open');
-      chev.className = 'fas fa-chevron-down';
-      btn.style.color = '';
+      panel.classList.remove('open'); chev.className = 'fas fa-chevron-down'; btn.style.color = '';
     }
   }
 
   setColFilter(col, mode){
-    if(col !== null) {
-      this.colFilterCol = col;
-      if(col) document.getElementById('col-filter-select').value = col;
-    }
-    if(mode !== null){
-      if(this.colFilterMode === mode) mode = '';
-      this.colFilterMode = mode;
-    }
+    if(col !== null){ this.colFilterCol = col; if(col) document.getElementById('col-filter-select').value = col; }
+    if(mode !== null){ if(this.colFilterMode === mode) mode = ''; this.colFilterMode = mode; }
     const pFilled = document.getElementById('cpill-filled');
     const pEmpty = document.getElementById('cpill-empty');
     pFilled.className = 'cpill' + (this.colFilterMode === 'filled' ? ' active-filled' : '');
@@ -915,8 +1107,7 @@ class GeoEditApp {
     const btnColFilter = document.getElementById('btn-col-filter');
     if(this.colFilterCol && this.colFilterMode){
       summary.style.display = 'block';
-      const modeLabel = this.colFilterMode === 'filled' ? 'sudah terisi' : 'belum terisi';
-      summary.textContent = `Menampilkan: "${this.colFilterCol}" yang ${modeLabel}`;
+      summary.textContent = `Menampilkan: "${this.colFilterCol}" yang ${this.colFilterMode === 'filled' ? 'sudah terisi' : 'belum terisi'}`;
       btnColFilter.innerHTML = '<i class="fas fa-filter"></i> Kolom <span class="filter-badge">!</span>';
     } else {
       summary.style.display = 'none';
@@ -925,7 +1116,7 @@ class GeoEditApp {
     this.renderAll();
   }
 
-  // ---- MAP ----
+  // ── MAP ──────────────────────────────────────────────────
   _initMap(){
     this.map = L.map('map', { zoomControl: true }).setView([0, 0], 2);
     this._setTileHybrid();
@@ -935,14 +1126,6 @@ class GeoEditApp {
     this._fitAll();
   }
 
-  _setTileOSM(){
-    if(this.tileLayer) this.map.removeLayer(this.tileLayer);
-    this.tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution:'© OpenStreetMap', maxZoom:19 }).addTo(this.map);
-  }
-  _setTileSatellite(){
-    if(this.tileLayer) this.map.removeLayer(this.tileLayer);
-    this.tileLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution:'© Esri', maxZoom:19 }).addTo(this.map);
-  }
   _setTileHybrid(){
     if(this.tileLayer) this.map.removeLayer(this.tileLayer);
     this.tileLayer = L.tileLayer('https://mt{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
@@ -966,15 +1149,18 @@ class GeoEditApp {
         const style = { color:'#1570ef', weight: isLine?2.5:1.5, fillColor:'#1570ef', fillOpacity: isArea?0.15:0, opacity:0.7 };
         L.geoJSON(feat, { style:()=>style, onEachFeature:(f,l)=>{ l.on('click', ()=>this.selectFeature(i)); } }).addTo(this.mainGeoLayer);
         if(isArea && r._lat != null && this.labelCol && this.labelsVisible && this._isFilled(r[this.labelCol])){
-          const label = L.marker([r._lat, r._lng], { icon: L.divIcon({ className:'map-label', html:`<span>${String(r[this.labelCol])}</span>`, iconAnchor:[0,0] }), interactive:false, zIndexOffset:50 });
+          const label = L.marker([r._lat, r._lng], {
+            icon: L.divIcon({ className:'map-label', html:`<span>${String(r[this.labelCol])}</span>`, iconAnchor:[0,0] }),
+            interactive:false, zIndexOffset:50
+          });
           this.mainGeoLayer.addLayer(label);
         }
       } else if(t === 'Point' || t === 'MultiPoint'){
         if(r._lat != null){
           const marker = L.circleMarker([r._lat, r._lng], { radius:6, color:'#fff', weight:2, fillColor:'#1570ef', fillOpacity:0.85 });
           marker.on('click', ()=>this.selectFeature(i));
-          if(this.labelCol && this._isFilled(r[this.labelCol])){
-            marker.bindTooltip(String(r[this.labelCol]), { permanent:false, direction:'top', className:'map-label', offset:[0,-8] });
+          if(this.labelCol && this.labelsVisible && this._isFilled(r[this.labelCol])){
+            marker.bindTooltip(String(r[this.labelCol]), { permanent:true, direction:'top', className:'map-label', offset:[0,-8] });
           }
           this.mainGeoLayer.addLayer(marker);
         }
@@ -1004,7 +1190,7 @@ class GeoEditApp {
     this.mainLayerVisible = !this.mainLayerVisible;
     document.getElementById('main-layer-vis').innerHTML = this.mainLayerVisible ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
     this._buildMainLayer();
-    if(this.mainLayerVisible&&this.selectedIdx!=null) this._highlightFeature(this.selectedIdx);
+    if(this.mainLayerVisible && this.selectedIdx != null) this._highlightFeature(this.selectedIdx);
   }
 
   toggleLabels(){
@@ -1014,7 +1200,7 @@ class GeoEditApp {
     this._buildMainLayer();
   }
 
-  // ---- OVERLAY LAYERS ----
+  // ── OVERLAY LAYERS ────────────────────────────────────────
   openLayerModal(){
     pendingLayerGeoJSON = null;
     document.getElementById('layer-upload-status').style.display = 'none';
@@ -1026,50 +1212,321 @@ class GeoEditApp {
 
   confirmAddLayer(){
     if(!pendingLayerGeoJSON) return;
-    const color = document.getElementById('layer-color-pick').value;
-    const opacity = parseFloat(document.getElementById('layer-opacity').value);
+    // Build default sym from "Add Layer" modal controls
+    const sym = {
+      mode: 'single',
+      fillColor: document.getElementById('layer-color-pick').value,
+      strokeColor: document.getElementById('layer-stroke-color').value,
+      opacity: parseFloat(document.getElementById('layer-opacity').value),
+      strokeWidth: parseFloat(document.getElementById('layer-stroke-width').value),
+      pointRadius: parseFloat(document.getElementById('layer-point-radius').value),
+      catCol: '',
+      catMap: {},
+      label: {
+        enabled: false,
+        col: pendingLayerGeoJSON._cols?.[0] || '',
+        color: '#1570ef',
+        size: 10,
+        geomOnly: true
+      }
+    };
     const name = pendingLayerGeoJSON._name || 'Overlay';
     const id = 'overlay_' + Date.now();
-    const geoLayer = L.geoJSON(pendingLayerGeoJSON, {
-      style:()=>({ color, weight:1.5, fillColor:color, fillOpacity:opacity, opacity:.9 }),
-      pointToLayer:(f,latlng)=>L.circleMarker(latlng,{radius:5,color:'#fff',weight:1.5,fillColor:color,fillOpacity:.85})
-    }).addTo(this.map);
-    this.overlayLayers.push({ id, name, layer:geoLayer, color, visible:true });
+    const ol = { id, name, geojson: pendingLayerGeoJSON, cols: pendingLayerGeoJSON._cols || [], layer: null, labelLayer: null, sym, visible: true };
+    this.overlayLayers.push(ol);
+    this._rebuildOverlayLayer(ol);
     this._renderLayerList();
     closeModal('modal-layer');
     this.toast(`Layer "${name}" ditambahkan`, 'success');
   }
 
+  // Rebuild the Leaflet layer for an overlay based on its sym config
+  _rebuildOverlayLayer(ol){
+    // Remove old layers
+    if(ol.layer) { this.map.removeLayer(ol.layer); ol.layer = null; }
+    if(ol.labelLayer) { this.map.removeLayer(ol.labelLayer); ol.labelLayer = null; }
+    if(!ol.visible) return;
+
+    const sym = ol.sym;
+    const geomOnly = sym.label.geomOnly;
+
+    const styleFor = (feat) => {
+      if(sym.mode === 'categorized' && sym.catCol) {
+        const val = String(feat.properties?.[sym.catCol] ?? '');
+        const entry = sym.catMap[val] || sym.catMap['__other__'] || { fill: sym.fillColor, stroke: sym.strokeColor };
+        return { color: entry.stroke, weight: sym.strokeWidth, fillColor: entry.fill, fillOpacity: sym.opacity, opacity: 0.9 };
+      }
+      return { color: sym.strokeColor, weight: sym.strokeWidth, fillColor: sym.fillColor, fillOpacity: sym.opacity, opacity: 0.9 };
+    };
+
+    ol.layer = L.geoJSON(ol.geojson, {
+      style: styleFor,
+      pointToLayer: (feat, latlng) => {
+        let fillColor = sym.fillColor, strokeColor = sym.strokeColor;
+        if(sym.mode === 'categorized' && sym.catCol) {
+          const val = String(feat.properties?.[sym.catCol] ?? '');
+          const entry = sym.catMap[val] || sym.catMap['__other__'] || {};
+          fillColor = entry.fill || sym.fillColor;
+          strokeColor = entry.stroke || sym.strokeColor;
+        }
+        return L.circleMarker(latlng, {
+          radius: sym.pointRadius,
+          color: strokeColor,
+          weight: sym.strokeWidth,
+          fillColor,
+          fillOpacity: sym.opacity
+        });
+      }
+    }).addTo(this.map);
+
+    // Labels
+    if(sym.label.enabled && sym.label.col) {
+      const labelGroup = L.layerGroup().addTo(this.map);
+      ol.geojson.features.forEach(feat => {
+        const geom = feat.geometry;
+        if(!geom) return;
+        const t = geom.type;
+        const isArea = t === 'Polygon' || t === 'MultiPolygon';
+        const isPoint = t === 'Point' || t === 'MultiPoint';
+        const isLine = t === 'LineString' || t === 'MultiLineString';
+        if(geomOnly && !isArea) return; // skip non-polygons if geomOnly
+
+        const val = feat.properties?.[sym.label.col];
+        if(!this._isFilled(val)) return;
+
+        let lat, lng;
+        try {
+          if(isPoint) { [lng, lat] = geom.type === 'MultiPoint' ? geom.coordinates[0] : geom.coordinates; }
+          else if(isArea){
+            const coords = t === 'Polygon' ? geom.coordinates[0] : (() => { let best=geom.coordinates[0][0]; geom.coordinates.forEach(p=>{if(p[0].length>best.length)best=p[0];}); return best; })();
+            lng = coords.reduce((s,c)=>s+c[0],0)/coords.length;
+            lat = coords.reduce((s,c)=>s+c[1],0)/coords.length;
+          } else if(isLine){
+            const coords = t === 'LineString' ? geom.coordinates : geom.coordinates[0];
+            const m = Math.floor(coords.length/2);
+            [lng, lat] = coords[m];
+          }
+        } catch(e){ return; }
+
+        if(lat == null || lng == null) return;
+
+        // Build label color CSS
+        const c = sym.label.color || '#1570ef';
+        const fs = sym.label.size || 10;
+        const html = `<span style="background:${c};font-size:${fs}px;color:#fff;display:inline-block;padding:2px 8px;border-radius:20px;font-weight:700;font-family:'DM Sans',sans-serif;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.25),0 0 0 1.5px rgba(255,255,255,.3);text-shadow:0 1px 2px rgba(0,0,0,.35);">${String(val)}</span>`;
+
+        const marker = L.marker([lat, lng], {
+          icon: L.divIcon({ className:'ol-label', html, iconAnchor:[0,0] }),
+          interactive: false,
+          zIndexOffset: 60
+        });
+        labelGroup.addLayer(marker);
+      });
+      ol.labelLayer = labelGroup;
+    }
+  }
+
   _renderLayerList(){
     const list = document.getElementById('layers-list');
-    list.querySelectorAll('.overlay-layer-item').forEach(el=>el.remove());
-    this.overlayLayers.forEach(ol=>{
+    list.querySelectorAll('.overlay-layer-item').forEach(el => el.remove());
+    this.overlayLayers.forEach(ol => {
       const div = document.createElement('div');
       div.className = 'layer-item overlay-layer-item';
+      div.style.flexWrap = 'wrap';
       div.innerHTML = `
-        <div class="layer-swatch" style="background:${ol.color}"></div>
+        <div class="layer-swatch" style="background:${ol.sym.fillColor}"></div>
         <span class="layer-name" title="${ol.name}">${ol.name}</span>
         <div class="layer-controls">
-          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.toggleOverlay('${ol.id}')"><i class="fas ${ol.visible?'fa-eye':'fa-eye-slash'}"></i></button>
-          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.removeOverlay('${ol.id}')" style="color:var(--danger)"><i class="fas fa-trash"></i></button>
-        </div>`;
+          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.toggleOverlay('${ol.id}')" title="Tampilkan/sembunyikan">
+            <i class="fas ${ol.visible ? 'fa-eye' : 'fa-eye-slash'}"></i>
+          </button>
+          <button class="overlay-sym-btn" onclick="app.openSymbologyModal('${ol.id}')" title="Symbology & Label">
+            <i class="fas fa-palette" style="font-size:9px"></i> Sym
+          </button>
+          <button class="btn btn-ghost btn-sm btn-icon" onclick="app.removeOverlay('${ol.id}')" style="color:var(--danger)" title="Hapus layer">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+        ${ol.sym.label.enabled ? `<div style="width:100%;font-size:10px;color:var(--accent);padding:2px 2px 0;display:flex;align-items:center;gap:4px"><i class="fas fa-tag" style="font-size:9px"></i> Label: ${ol.sym.label.col}</div>` : ''}`;
       list.appendChild(div);
     });
   }
 
   toggleOverlay(id){
-    const ol=this.overlayLayers.find(l=>l.id===id); if(!ol) return;
-    ol.visible=!ol.visible; if(ol.visible) ol.layer.addTo(this.map); else this.map.removeLayer(ol.layer);
+    const ol = this.overlayLayers.find(l => l.id === id); if(!ol) return;
+    ol.visible = !ol.visible;
+    this._rebuildOverlayLayer(ol);
     this._renderLayerList();
   }
 
   removeOverlay(id){
-    const idx=this.overlayLayers.findIndex(l=>l.id===id); if(idx===-1) return;
-    this.map.removeLayer(this.overlayLayers[idx].layer); this.overlayLayers.splice(idx,1);
-    this._renderLayerList(); this.toast('Layer dihapus','info');
+    const idx = this.overlayLayers.findIndex(l => l.id === id); if(idx === -1) return;
+    const ol = this.overlayLayers[idx];
+    if(ol.layer) this.map.removeLayer(ol.layer);
+    if(ol.labelLayer) this.map.removeLayer(ol.labelLayer);
+    this.overlayLayers.splice(idx, 1);
+    this._renderLayerList();
+    this.toast('Layer dihapus', 'info');
   }
 
-  // ---- SELECT + DETAIL ----
+  // ── SYMBOLOGY MODAL ───────────────────────────────────────
+  openSymbologyModal(id){
+    const ol = this.overlayLayers.find(l => l.id === id); if(!ol) return;
+    this._symTargetId = id;
+    document.getElementById('sym-modal-title').innerHTML = `<i class="fas fa-palette"></i> Symbology & Label — <span style="color:var(--accent)">${ol.name}</span>`;
+
+    const sym = ol.sym;
+
+    // Set mode
+    this._symMode = sym.mode || 'single';
+    this._applySymModeUI();
+
+    // Single panel values
+    document.getElementById('sym-fill-color').value = sym.fillColor;
+    document.getElementById('sym-stroke-color').value = sym.strokeColor;
+    const opEl = document.getElementById('sym-opacity');
+    opEl.value = sym.opacity;
+    opEl.nextElementSibling.textContent = sym.opacity.toFixed(2);
+    const swEl = document.getElementById('sym-stroke-width');
+    swEl.value = sym.strokeWidth;
+    swEl.nextElementSibling.textContent = sym.strokeWidth.toFixed(1);
+    const prEl = document.getElementById('sym-point-radius');
+    prEl.value = sym.pointRadius;
+    prEl.nextElementSibling.textContent = sym.pointRadius;
+
+    // Cat col select
+    const catSel = document.getElementById('sym-cat-col');
+    catSel.innerHTML = ol.cols.map(c => `<option value="${c}"${c===sym.catCol?' selected':''}>${c}</option>`).join('') || '<option value="">—</option>';
+    if(this._symMode === 'categorized') this.buildCatTable(ol, sym.catCol || ol.cols[0]);
+
+    // Labels
+    this._symLabelEnabled = sym.label.enabled;
+    this._updateLabelToggleBtn();
+    document.getElementById('sym-label-options').style.display = sym.label.enabled ? 'flex' : 'none';
+
+    const lblSel = document.getElementById('sym-label-col');
+    lblSel.innerHTML = ol.cols.map(c => `<option value="${c}"${c===sym.label.col?' selected':''}>${c}</option>`).join('') || '<option value="">—</option>';
+    document.getElementById('sym-label-color').value = sym.label.color || '#1570ef';
+    const lsEl = document.getElementById('sym-label-size');
+    lsEl.value = sym.label.size || 10;
+    lsEl.nextElementSibling.textContent = lsEl.value;
+    document.getElementById('sym-label-geomonly').value = sym.label.geomOnly ? '1' : '0';
+
+    openModal('modal-sym');
+  }
+
+  setSymMode(mode){
+    this._symMode = mode;
+    this._applySymModeUI();
+    if(mode === 'categorized'){
+      const ol = this.overlayLayers.find(l => l.id === this._symTargetId);
+      if(ol) this.buildCatTable(ol, document.getElementById('sym-cat-col').value || ol.cols[0]);
+    }
+  }
+
+  _applySymModeUI(){
+    document.getElementById('sym-tab-single').classList.toggle('active', this._symMode === 'single');
+    document.getElementById('sym-tab-cat').classList.toggle('active', this._symMode === 'categorized');
+    document.getElementById('sym-single-panel').style.display = this._symMode === 'single' ? '' : 'none';
+    document.getElementById('sym-cat-panel').classList.toggle('visible', this._symMode === 'categorized');
+  }
+
+  buildCatTable(ol, forceCol){
+    if(!ol) ol = this.overlayLayers.find(l => l.id === this._symTargetId);
+    if(!ol) return;
+    const col = forceCol || document.getElementById('sym-cat-col').value;
+    if(!col) return;
+
+    // Gather unique values
+    const vals = [...new Set(ol.geojson.features.map(f => String(f.properties?.[col] ?? '')))].slice(0, 50);
+    const existCatMap = ol.sym.catMap || {};
+
+    const tbody = document.getElementById('sym-cat-tbody');
+    tbody.innerHTML = '';
+    vals.forEach((val, i) => {
+      const existing = existCatMap[val];
+      const fill = existing?.fill || CAT_PALETTE[i % CAT_PALETTE.length];
+      const stroke = existing?.stroke || _darken(fill);
+      const tr = document.createElement('tr');
+      tr.dataset.val = val;
+      tr.innerHTML = `
+        <td><span class="cat-val-label" title="${val}">${val || '(kosong)'}</span></td>
+        <td><input type="color" class="cat-color-pick" data-type="fill" value="${fill}" title="Warna isi"/></td>
+        <td><input type="color" class="cat-color-pick" data-type="stroke" value="${stroke}" title="Warna garis"/></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  previewSym(){
+    // Live preview: update the target layer immediately with single-color params
+    const ol = this.overlayLayers.find(l => l.id === this._symTargetId);
+    if(!ol || this._symMode !== 'single') return;
+    const fill = document.getElementById('sym-fill-color').value;
+    const stroke = document.getElementById('sym-stroke-color').value;
+    const opacity = parseFloat(document.getElementById('sym-opacity').value);
+    const sw = parseFloat(document.getElementById('sym-stroke-width').value);
+    const pr = parseFloat(document.getElementById('sym-point-radius').value);
+    if(ol.layer) {
+      ol.layer.setStyle({ color: stroke, weight: sw, fillColor: fill, fillOpacity: opacity });
+    }
+  }
+
+  toggleSymLabel(){
+    this._symLabelEnabled = !this._symLabelEnabled;
+    this._updateLabelToggleBtn();
+    document.getElementById('sym-label-options').style.display = this._symLabelEnabled ? 'flex' : 'none';
+  }
+
+  _updateLabelToggleBtn(){
+    const btn = document.getElementById('sym-label-toggle');
+    if(this._symLabelEnabled){
+      btn.innerHTML = '<i class="fas fa-tag"></i> Aktif';
+      btn.classList.add('btn-label-active');
+    } else {
+      btn.innerHTML = '<i class="fas fa-tag"></i> Nonaktif';
+      btn.classList.remove('btn-label-active');
+    }
+  }
+
+  applySymbology(){
+    const ol = this.overlayLayers.find(l => l.id === this._symTargetId);
+    if(!ol) return;
+
+    // Build catMap from table
+    const catMap = {};
+    document.querySelectorAll('#sym-cat-tbody tr').forEach(tr => {
+      const val = tr.dataset.val;
+      const fills = tr.querySelectorAll('.cat-color-pick');
+      catMap[val] = { fill: fills[0]?.value || '#888', stroke: fills[1]?.value || '#555' };
+    });
+
+    const catCol = document.getElementById('sym-cat-col').value;
+
+    ol.sym = {
+      mode: this._symMode,
+      fillColor: document.getElementById('sym-fill-color').value,
+      strokeColor: document.getElementById('sym-stroke-color').value,
+      opacity: parseFloat(document.getElementById('sym-opacity').value),
+      strokeWidth: parseFloat(document.getElementById('sym-stroke-width').value),
+      pointRadius: parseFloat(document.getElementById('sym-point-radius').value),
+      catCol,
+      catMap,
+      label: {
+        enabled: this._symLabelEnabled,
+        col: document.getElementById('sym-label-col').value,
+        color: document.getElementById('sym-label-color').value,
+        size: parseInt(document.getElementById('sym-label-size').value),
+        geomOnly: document.getElementById('sym-label-geomonly').value === '1'
+      }
+    };
+
+    this._rebuildOverlayLayer(ol);
+    this._renderLayerList();
+    closeModal('modal-sym');
+    this.toast(`Symbology "${ol.name}" diterapkan`, 'success');
+  }
+
+  // ── SELECT + DETAIL ───────────────────────────────────────
   selectFeature(idx){
     this.selectedIdx = idx;
     const r = this.data[idx]; if(!r) return;
@@ -1088,12 +1545,10 @@ class GeoEditApp {
   _renderDetail(r){
     document.getElementById('detail-empty').style.display = 'none';
     document.getElementById('detail-content').style.display = 'flex';
-
     const mainVal = this.labelCol && this._isFilled(r[this.labelCol]) ? r[this.labelCol] : null;
     document.getElementById('dh-title').textContent = mainVal || `Feature #${r._i + 1}`;
     document.getElementById('dh-geom').textContent = r._geomType || 'Unknown';
     document.getElementById('dh-coord').textContent = r._lat != null ? `${(+r._lat).toFixed(5)}, ${(+r._lng).toFixed(5)}` : 'Tidak ada koordinat';
-
     if(r._lat != null){
       document.getElementById('link-gmaps').href = `https://maps.google.com/?q=${r._lat},${r._lng}`;
       document.getElementById('link-osm').href = `https://www.openstreetmap.org/?mlat=${r._lat}&mlon=${r._lng}&zoom=16`;
@@ -1102,14 +1557,12 @@ class GeoEditApp {
     } else {
       document.getElementById('quick-links').style.display = 'none';
     }
-
     const filledCount = this.allCols.filter(c => this._isFilled(r[c])).length;
     const pct = this.allCols.length ? Math.round(filledCount / this.allCols.length * 100) : 0;
     document.getElementById('fcb-pct').textContent = pct + '%';
     const fill = document.getElementById('fcb-fill');
     fill.style.width = pct + '%';
     fill.style.background = pct === 100 ? 'var(--success)' : pct > 0 ? 'var(--warning)' : 'var(--danger)';
-
     const ef = document.getElementById('edit-fields');
     ef.innerHTML = '';
     this.allCols.forEach(col => {
@@ -1135,7 +1588,6 @@ class GeoEditApp {
           </div>
         </div>`);
     });
-
     document.getElementById('readonly-section').style.display = 'none';
   }
 
@@ -1186,23 +1638,14 @@ class GeoEditApp {
     const r = this.data.find(d => d._i === this.selectedIdx);
     const label = (this.labelCol && this._isFilled(r?.[this.labelCol])) ? r[this.labelCol] : `Feature #${(r?._i ?? 0) + 1}`;
     if(!confirm(`Hapus "${label}"?\n\nFitur ini akan dihapus dari peta dan daftar. Tindakan ini dapat dibatalkan dengan Ctrl+Z.`)) return;
-
     this._pushHistory();
-
-    // Remove from data and _features by original index
     const origIdx = this.selectedIdx;
     this.data = this.data.filter(d => d._i !== origIdx);
     this._features = this._features.filter((_, i) => i !== origIdx);
-
-    // Re-index _i values to stay contiguous
     this.data.forEach((d, newPos) => { d._i = newPos; });
-
-    // Clear selection and hide detail panel
     this.selectedIdx = null;
     document.getElementById('detail-empty').style.display = '';
     document.getElementById('detail-content').style.display = 'none';
-
-    // Refresh map and list
     this._buildMainLayer();
     this.highlightLayer.clearLayers();
     this.renderAll();
@@ -1220,7 +1663,7 @@ class GeoEditApp {
     if(next>=0&&next<this.filtered.length) this.selectFeature(this.filtered[next]._i);
   }
 
-  // ---- RENDER ----
+  // ── RENDER ────────────────────────────────────────────────
   renderAll(){
     this._applyFilters();
     this._renderList();
@@ -1265,7 +1708,6 @@ class GeoEditApp {
       div.className=`feat-item status-${s}${r._i===this.selectedIdx?' active':''}`;
       div.dataset.i=r._i;
       const sub=this.allCols.slice(0,3).filter(c=>c!==this.labelCol).map(c=>this._isFilled(r[c])?r[c]:null).filter(Boolean).join(' · ');
-
       let colIndicatorHtml = '';
       if(this.colFilterCol){
         const isFilled=this._isFilled(r[this.colFilterCol]);
@@ -1273,7 +1715,6 @@ class GeoEditApp {
         const icon=isFilled?'✓':'✗';
         colIndicatorHtml=`<span style="font-size:10px;font-weight:700;color:${color};flex-shrink:0">${icon}</span>`;
       }
-
       div.innerHTML=`
         <div class="status-dot" style="background:${this._statusColor(s)}"></div>
         <div class="feat-num">${r._i+1}</div>
@@ -1310,7 +1751,7 @@ class GeoEditApp {
 
   _bindSearch(){ document.getElementById('search-input').addEventListener('input',()=>this.renderAll()); }
 
-  // ---- HISTORY ----
+  // ── HISTORY ──────────────────────────────────────────────
   _pushHistory(){
     const snap=this.data.map(r=>{const s={_i:r._i};this.allCols.forEach(c=>s[c]=r[c]);return s;});
     this.history.push(JSON.stringify(snap)); if(this.history.length>60) this.history.shift();
@@ -1334,7 +1775,7 @@ class GeoEditApp {
     if(this.selectedIdx!=null){const r=this.data.find(d=>d._i===this.selectedIdx);if(r)this._renderDetail(r);}
   }
 
-  // ---- EXPORT ----
+  // ── EXPORT ───────────────────────────────────────────────
   openExport(){ openModal('modal-export'); }
 
   exportCSV(){
@@ -1358,57 +1799,35 @@ class GeoEditApp {
     closeModal('modal-export'); this.toast('GeoJSON berhasil diekspor!');
   }
 
-  // ✅ FIXED: handles Promise<ArrayBuffer> from shp-write v0.4+, as well as legacy base64 string
   async exportShapefile(){
     try {
       if(typeof shpwrite === 'undefined') throw new Error('Library shp-write tidak termuat');
-
       const fc = {
         type: 'FeatureCollection',
         features: this._features.map((feat, i) => {
           const r = this.data[i];
           const props = {};
-          // Shapefile field names are max 10 chars
-          this.allCols.forEach(c => {
-            const key = String(c).substring(0, 10);
-            props[key] = r[c] ?? '';
-          });
+          this.allCols.forEach(c => { const key = String(c).substring(0, 10); props[key] = r[c] ?? ''; });
           return { ...feat, properties: props };
         })
       };
-
-      const opts = {
-        folder: 'kkprl_export',
-        types: { point: 'POINT', polygon: 'POLYGON', line: 'POLYLINE' }
-      };
-
-      // shp-write v0.4+ returns Promise<ArrayBuffer>; older versions return base64 string
+      const opts = { folder: 'kkprl_export', types: { point: 'POINT', polygon: 'POLYGON', line: 'POLYLINE' } };
       let result = shpwrite.zip(fc, opts);
-      if (result && typeof result.then === 'function') {
-        result = await result;
-      }
-
+      if (result && typeof result.then === 'function') result = await result;
       let blob;
-      if (result instanceof ArrayBuffer) {
-        blob = new Blob([result], { type: 'application/zip' });
-      } else if (result instanceof Uint8Array) {
-        blob = new Blob([result], { type: 'application/zip' });
-      } else if (typeof result === 'string') {
-        // Legacy: base64-encoded string
+      if (result instanceof ArrayBuffer) blob = new Blob([result], { type: 'application/zip' });
+      else if (result instanceof Uint8Array) blob = new Blob([result], { type: 'application/zip' });
+      else if (typeof result === 'string') {
         const byteChars = atob(result);
         const byteNums = new Uint8Array(byteChars.length);
         for (let i = 0; i < byteChars.length; i++) byteNums[i] = byteChars.charCodeAt(i);
         blob = new Blob([byteNums], { type: 'application/zip' });
-      } else {
-        throw new Error('Format output shp-write tidak dikenali: ' + typeof result);
-      }
-
+      } else throw new Error('Format output shp-write tidak dikenali: ' + typeof result);
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'kkprl_export_' + Date.now() + '.zip';
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-
       closeModal('modal-export');
       this.toast('Shapefile ZIP berhasil diekspor!', 'success');
     } catch(err) {
@@ -1430,7 +1849,7 @@ class GeoEditApp {
     a.download=filename; a.click();
   }
 
-  // ---- IMPORT ----
+  // ── IMPORT ───────────────────────────────────────────────
   openImport(){ document.getElementById('import-file').value=''; document.getElementById('import-text').value=''; openModal('modal-import'); }
   confirmImport(){
     const fileEl=document.getElementById('import-file');
@@ -1452,14 +1871,14 @@ class GeoEditApp {
     else{this.toast('Tidak ada data untuk diimpor','warning');}
   }
 
-  // ---- NEW FILE ----
+  // ── NEW FILE ─────────────────────────────────────────────
   loadNewFile(){ if(!confirm('Muat file baru? Sesi saat ini akan hilang.')) return; location.reload(); }
 
-  // ---- THEME ----
+  // ── THEME ────────────────────────────────────────────────
   toggleTheme(){ toggleThemeEarly(); }
   _loadTheme(){ const t=localStorage.getItem('geoedit_theme');if(t) document.documentElement.setAttribute('data-theme',t); }
 
-  // ---- KEYBOARD ----
+  // ── KEYBOARD ─────────────────────────────────────────────
   _bindKeys(){
     document.addEventListener('keydown',e=>{
       if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
@@ -1467,11 +1886,11 @@ class GeoEditApp {
       if(e.key==='ArrowUp'){e.preventDefault();this.navigate(-1);}
       if((e.ctrlKey||e.metaKey)&&e.key==='z'){e.preventDefault();this.undo();}
       if((e.ctrlKey||e.metaKey)&&e.key==='y'){e.preventDefault();this.redo();}
-      if(e.key==='Escape'){closeModal('modal-colmap');closeModal('modal-export');closeModal('modal-import');closeModal('modal-layer');}
+      if(e.key==='Escape'){closeModal('modal-colmap');closeModal('modal-export');closeModal('modal-import');closeModal('modal-layer');closeModal('modal-sym');}
     });
   }
 
-  // ---- TOAST ----
+  // ── TOAST ────────────────────────────────────────────────
   toast(msg,type='success'){
     const ct=document.getElementById('toast-container');
     const el=document.createElement('div'); el.className='toast';
@@ -1481,6 +1900,14 @@ class GeoEditApp {
     ct.appendChild(el);
     setTimeout(()=>{el.classList.add('leave');setTimeout(()=>el.remove(),300);},3000);
   }
+}
+
+// ── HELPERS ───────────────────────────────────────────────
+function _darken(hex){
+  // Simple hex darkener for auto stroke colors
+  let r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+  r=Math.max(0,r-40); g=Math.max(0,g-40); b=Math.max(0,b-40);
+  return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
 }
 
 const app = new GeoEditApp();
